@@ -1,0 +1,83 @@
+:root {
+    --primary-color: #8b46f7;
+    --secondary-color: #f3e8ff;
+    --text-primary: #5a2ea6;
+    --bg-light: #faf8ff;
+}
+
+body {
+    font-family: "Segoe UI", Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: var(--bg-light);
+}
+
+.contact {
+    text-align: center;
+    margin-top: 60px;
+    margin-bottom: 30px;
+    padding: 20px;
+}
+
+.contact h6 {
+    color: var(--primary-color);
+    font-size: 15px;
+    font-weight: 600;
+    margin-bottom: 5px;
+}
+
+.contact h1 {
+    font-size: 36px;
+    color: #222;
+    margin-bottom: 10px;
+}
+
+.contact p {
+    font-size: 16px;
+    color: #666;
+}
+
+.contact-cards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 40px;
+    padding: 30px;
+}
+
+.card-item {
+    background-color: white;
+    border-radius: 12px;
+    width: 280px;
+    text-align: center;
+    padding: 25px 20px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    transition: transform 0.2s ease, box-shadow 0.3s ease;
+}
+
+.card-item img {
+    width: 50px;
+    height: 50px;
+    margin-bottom: 15px;
+}
+
+.card-item h4 {
+    color: var(--text-primary);
+    margin: 10px 0;
+}
+
+.card-item p {
+    font-size: 14px;
+    color: #555;
+    margin: 6px 0;
+}
+
+.card-item .highlight {
+    color: var(--primary-color);
+    font-weight: 600;
+}
+
+.card-item:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 6px 20px rgba(90, 46, 166, 0.1);
+}

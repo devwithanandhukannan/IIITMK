@@ -1,0 +1,83 @@
+:root {
+    --primary-color: #8b46f7;
+    --secondary-color: #f3e8ff;
+    --text-primary: #5a2ea6;
+    --bg-light: #faf8ff;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: "Segoe UI", Arial, sans-serif;
+    background-color: var(--bg-light);
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 80px 20px;
+}
+
+.add-course-card {
+    background-color: white;
+    padding: 40px 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(90, 46, 166, 0.1);
+    width: 100%;
+    max-width: 450px;
+}
+
+.add-course-card h1 {
+    text-align: center;
+    color: var(--text-primary);
+    margin-bottom: 25px;
+}
+
+
+form label {
+    font-weight: 600;
+    color: #333;
+    display: block;
+    margin-bottom: 5px;
+}
+
+form input,
+form select,
+form textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 16px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 14px;
+    transition: border-color 0.3s ease;
+}
+
+form input:focus,
+form select:focus,
+form textarea:focus {
+    border-color: var(--primary-color);
+    outline: none;
+}
+
+form button {
+    width: 100%;
+    background-color: var(--primary-color);
+    color: white;
+    padding: 12px;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 600;
+    transition: background-color 0.3s ease, transform 0.1s ease;
+}
+
+form button:hover {
+    background-color: #9b6dfd;
+}
+
+form button:active {
+    transform: scale(0.98);
+}

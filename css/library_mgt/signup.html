@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Library Management - Sign Up</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header class="header-orange">
+    <h1>Library Management System - Sign Up</h1>
+  </header>
+
+  <div class="container container-orange">
+    <aside class="sidebar sidebar-orange">
+      <h3>Join the Library</h3>
+      <p>Fill in your details to create an account.</p>
+      <a href="login.html">Back to Login</a>
+    </aside>
+
+    <main class="main-content">
+      <form action="#" method="post" class="signup-form">
+        <label>Full Name:</label><input type="text" name="fullname" required>
+        <label>Email:</label><input type="email" name="email" required>
+        <label>Username:</label><input type="text" name="username" required>
+        <label>Password:</label><input type="password" name="password" required>
+        <label>Confirm Password:</label><input type="password" name="confirm_password" required>
+        <label>Membership Type:</label>
+        <select name="membership">
+          <option>Standard</option>
+          <option>Student</option>
+          <option>Premium</option>
+        </select>
+        <div class="form-actions">
+          <input type="submit" value="Sign Up">
+          <input type="reset" value="Clear">
+        </div>
+      </form>
+
+      <hr>
+      <p class="center-text"><a href="login.html">Already have an account? Login</a></p>
+    </main>
+  </div>
+
+  <footer><small>Library Management System</small></footer>
+</body>
+</html>

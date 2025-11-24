@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <center>
+        <table border="0" width="90%">
+            <tr>
+                <td align="left">
+                    <img src="./images/Logo1-267x300.png" width="40" alt="Logo">
+                </td>
+                <td align="right">
+                    <table border="0">
+                        <tr>
+                            <td><a href="#">Home</a> | </td>
+                            <td><a href="./login.html">login</a> | </td>
+                            <td><a href="./signup.html">Sign up</a> | </td>
+                            <td><a href="./addcourse.html">Add Course</a> | </td>
+                            <td><a href="./updatecourse.html">Update Course</a> | </td>
+                            <td><a href="./pure_contact.html">contact</a> | </td>
+                            <td><a href="./pure_learnmore.html">Learn more</a> | </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+        </table>
+    </center>
+    <center><h1><font color="black">Add course</font></h1></center>
+    <form>
+        <center>
+        <table cellspacing="30" bgcolor="lightpink" width="700px">
+            <tr>
+                <td>Course Name</td>
+                <td><input type="text" placeholder="course name" name="course_name" required></td>
+            </tr>
+             <tr>
+                <td>Course ID</td>
+                <td><input type="text" placeholder="course ID" name="course_id" required></td>
+            </tr>
+            <tr>
+                <td>Course Type</td>
+                <td>
+                    <select required >
+                        <option value="self_placed_one" selected>self placed</option>
+                        <option value="self_placed_two">self placed one</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>Description</td>
+                <td><textarea rows="10"></textarea></td>
+            </tr>
+            <tr>
+                <td>Price</td>
+                <td>
+                    <select required> 
+                        <option value="1000">1000</option>
+                        <option value="4000">4000</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>Education</td>
+                <td>
+                    <input type="checkbox" name="UG" id="">UG
+                    <input type="checkbox" name="PG" id="">PG
+                </td>
+            </tr>
+            <tr>
+                <td>Gender</td>
+                <td>
+                    <input type="radio" name="gender" value="male" id="">Male
+                    <input type="radio" name="gender" value="female" id="">Female
+                    <input type="radio" name="gender" value="others" id="">others
+                </td>
+            </tr>
+            <tr>
+                <td>Email</td>
+                <td><input type="email" placeholder="email" name="email" required></td>
+            </tr>
+            <tr>
+                <td>Password</td>
+                <td><input type="password" placeholder="password" name="password" required></td>
+            </tr>
+            <tr>
+                <td>
+                    
+                </td>
+                <td>
+                    <input type="submit" value="Add Course">
+                    <input type="reset" value="Clear">
+                </td>
+            </tr>
+        </table>
+        </center>
+    </form>
+</body>
+</html>

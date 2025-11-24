@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Update Course</title>
+</head>
+<body bgcolor="#f4e6ff">
+     <center>
+        <table border="0" width="90%">
+            <tr>
+                <td align="left">
+                    <img src="./images/Logo1-267x300.png" width="40" alt="Logo">
+                </td>
+                <td align="right">
+                    <table border="0">
+                        <tr>
+                            <td><a href="#">Home</a> | </td>
+                            <td><a href="./login.html">login</a> | </td>
+                            <td><a href="./signup.html">Sign up</a> | </td>
+                            <td><a href="./addcourse.html">Add Course</a> | </td>
+                            <td><a href="./updatecourse.html">Update Course</a> | </td>
+                            <td><a href="./pure_contact.html">contact</a> | </td>
+                            <td><a href="./pure_learnmore.html">Learn more</a> | </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+        </table>
+    </center>
+    <br><br><br>
+    <form action="update_course.html" method="post">
+        <table border="0" align="center" bgcolor="#f0dcff" cellpadding="10" cellspacing="0" width="500">
+            <tr>
+                <th colspan="2" bgcolor="#e0c8ff">
+                    <font size="5" color="#5a2ea6">Update Course</font>
+                </th>
+            </tr>
+
+            <tr>
+                <td><b>Course Name</b></td>
+                <td><input type="text" name="coursename" placeholder="course name" size="40" required></td>
+            </tr>
+
+            <tr>
+                <td><b>Course Type</b></td>
+                <td>
+                    <select name="coursetype">
+                        <option>Online</option>
+                        <option>Offline</option>
+                        <option selected>Hybrid</option>
+                    </select>
+                </td>
+            </tr>
+
+            <tr>
+                <td><b>Description</b></td>
+                <td>
+                    <textarea name="description" rows="4" cols="38" required placeholder="description"></textarea>
+                </td>
+            </tr>
+
+            <tr>
+                <td><b>Price</b></td>
+                <td>
+                    <select name="price">
+                        <option>Rs.10000</option>
+                        <option>Rs.12000</option>
+                        <option selected>Rs.15000</option>
+                        <option>Rs.20000</option>
+                    </select>
+                </td>
+            </tr>
+
+            <tr>
+                <td colspan="2" align="center">
+                    <input type="submit" value="Update Course">
+                </td>
+            </tr>
+        </table>
+    </form>
+
+</body>
+</html>

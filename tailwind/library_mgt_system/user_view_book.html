@@ -1,0 +1,61 @@
+_<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>View Books</title>
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+</head>
+<body class="bg-gray-100 text-gray-900">
+
+<header class="bg-black text-white py-6">
+  <div class="max-w-6xl mx-auto px-4 flex justify-between items-center">
+    <h1 class="text-2xl font-semibold">Library Management System</h1>
+    <a href="user_login.html" class="bg-white text-black px-4 py-2 rounded hover:bg-gray-200">
+      Logout
+    </a>
+  </div>
+</header>
+
+<main class="max-w-6xl mx-auto mt-10 px-4">
+  <div class="bg-white shadow-xl rounded-xl p-6 overflow-x-auto">
+    <table class="w-full border-collapse">
+      <thead class="bg-gray-200 text-gray-900 uppercase text-sm">
+        <tr>
+          <th class="p-3 text-left">Cover</th>
+          <th class="p-3 text-left">Title</th>
+          <th class="p-3 text-left">Author</th>
+          <th class="p-3 text-left">Category</th>
+          <th class="p-3 text-left">Year</th>
+          <th class="p-3 text-left">ISBN</th>
+          <th class="p-3 text-left">Copies</th>
+          <th class="p-3 text-left">Action</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr class="border-t hover:bg-gray-50">
+          <td class="p-3"><img src="book.png" class="w-14 h-20 rounded shadow"></td>
+          <td class="p-3 font-medium">Rich Dad Poor Dad</td>
+          <td class="p-3">Robert Kiyosaki</td>
+          <td class="p-3">Finance</td>
+          <td class="p-3">2020</td>
+          <td class="p-3">1234567890</td>
+          <td class="p-3">3</td>
+          <td class="p-3">
+            <button class="bg-black text-white px-3 py-1 rounded hover:bg-gray-800">
+              Borrow
+            </button>
+          </td>
+        </tr>
+      </tbody>
+
+    </table>
+  </div>
+</main>
+
+<footer class="text-center py-6 text-sm text-gray-600 mt-10">
+  Library Management System
+</footer>
+
+</body>
+</html>

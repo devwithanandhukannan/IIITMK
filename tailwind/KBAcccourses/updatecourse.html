@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Update Course</title>
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+</head>
+
+<body class="bg-white min-h-screen">
+  <header class="flex items-center justify-between px-6 py-3 bg-purple-100">
+    <img src="./Logo1.png" alt="KBA Logo" class="w-8">
+     <nav class="space-x-6 text-purple-800 font-medium">
+      <a href="./kbahomepage.html" class="hover:text-purple-600 transition-colors">Home</a>
+      <a href="./courses.html" class="hover:text-purple-600 transition-colors">Courses</a>
+      <a href="./contact_as.html" class="hover:text-purple-600 transition-colors">Contact Us</a>
+      <a href="./addcourse.html" class="hover:text-purple-600 transition-colors">Add Course</a>
+      <a href="./login.html" class="hover:text-purple-600 transition-colors">Logout</a>
+    </nav>
+  </header>
+
+  <div class="max-w-md mx-auto mt-8 p-8 bg-purple-100 rounded-lg shadow-sm">
+    <h2 class="text-2xl font-bold text-purple-800 text-center mb-6">Update Course</h2>
+    
+    <form class="space-y-5">
+      <div>
+        <label for="courseName" class="block text-gray-700 font-medium mb-1">Course Name</label>
+        <input 
+          type="text" 
+          id="courseName" 
+          value="s122" 
+          class="w-full p-2 border border-gray-200 rounded bg-white focus:outline-none focus:ring-1 focus:ring-purple-500"
+        >
+      </div>
+
+      <div>
+        <label for="courseType" class="block text-gray-700 font-medium mb-1">Course Type</label>
+        <select 
+          id="courseType" 
+          class="w-full p-2 border border-gray-200 rounded bg-gray-100 focus:outline-none focus:ring-1 focus:ring-purple-500"
+        >
+          <option>Self-Paced</option>
+          <option>Instructor-Led</option>
+          <option selected>Hybrid</option>
+        </select>
+      </div>
+
+      <div>
+        <label for="description" class="block text-gray-700 font-medium mb-1">Description</label>
+        <textarea 
+          id="description" 
+          rows="4" 
+          class="w-full p-2 border border-gray-200 rounded bg-white focus:outline-none focus:ring-1 focus:ring-purple-500"
+        >11q</textarea>
+      </div>
+
+      <div>
+        <label for="price" class="block text-gray-700 font-medium mb-1">Price</label>
+        <select 
+          id="price" 
+          class="w-full p-2 border border-gray-200 rounded bg-gray-100 focus:outline-none focus:ring-1 focus:ring-purple-500"
+        >
+          <option>Rs.5000</option>
+          <option>Rs.10000</option>
+          <option selected>Rs.15000</option>
+          <option>Rs.20000</option>
+        </select>
+      </div>
+
+      <button 
+        type="submit" 
+        class="w-full bg-purple-600 hover:bg-purple-700 text-white py-2 rounded-full transition-colors font-medium"
+      >
+        Update Course
+      </button>
+    </form>
+  </div>
+</body>
+</html>

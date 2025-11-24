@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>responsive</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+    <header class="flex justify-end bg-slate-400 p-5  sm:bg-green-200 md:bg-amber-700 lg:bg-red-400">
+        <nav class="flex flex-col sm:flex-col sm:items-start sm:justify-start md:flex-row lg:flex-row md:space-x-5">
+            <a href="">Home</a>
+            <a href="">About us</a>
+            <a href="">Contact us</a>
+            <a href="">Courses</a>
+        </nav>
+    </header>
+    <section>
+        <div class="block sm:hidden border-w">visible only on mobile</div>
+        <div class="hidden sm:block">hidden on mobile visible large screen</div>
+    </section>
+</body>
+</html>

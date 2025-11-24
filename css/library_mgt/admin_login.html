@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Admin Login - Library Management</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header class="header-blue">
+    <h1>Admin Login Panel</h1>
+  </header>
+
+  <div class="container container-blue">
+    <aside class="sidebar sidebar-blue">
+      <h3>Admin Access</h3>
+      <p>Only authorized staff can access this portal.</p>
+      <a href="login.html">User Login</a>
+      <a href="view_books.html">User Book View</a>
+    </aside>
+
+    <main class="main-content">
+      <form action="#" method="post" class="login-form">
+        <label>Admin Username:</label><input type="text" name="admin_user" required>
+        <label>Admin Password:</label><input type="password" name="admin_pass" required>
+        
+        <div class="form-actions">
+          <input type="submit" value="Login">
+          <input type="reset" value="Clear">
+        </div>
+      </form>
+    </main>
+  </div>
+
+  <footer><small>Library Management System</small></footer>
+</body>
+</html>

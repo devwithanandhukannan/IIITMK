@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindplus/elements@1" type="module"></script>
+</head>
+
+<body class="bg-purple-200 p-4">
+    <div class="w-full flex justify-center items-center h-[90vh]">
+        <div class="w-[400px] bg-white h-[500px] rounded-3xl shadow-lg">
+            
+            <h1 class="text-3xl font-bold pt-10 pb-5 text-center text-purple-600">Login</h1>
+
+            <div class="flex flex-col p-5 space-y-4">
+                <label for="email" class="font-semibold">Email</label>
+                <input 
+                    type="email" 
+                    id="email" 
+                    class="w-full h-10 rounded-md border border-gray-300 px-2 focus:border-purple-500 focus:outline-none">
+
+                <label for="passwd" class="font-semibold">Password</label>
+                <input 
+                    type="password" 
+                    id="passwd" 
+                    class="w-full h-10 rounded-md border border-gray-300 px-2 focus:border-purple-500 focus:outline-none">
+            </div>
+
+            <div class="flex justify-between px-5">
+                <button class="bg-purple-600 hover:bg-purple-700 text-white font-medium px-5 py-2 rounded-md">
+                    Login
+                </button>
+                <a href="#" class="text-purple-600 hover:underline">Forgot Password?</a>
+            </div>
+
+            <p class="text-center mt-6">
+                Don't have an account? 
+                <a href="./signup.html" class="text-purple-600 hover:underline">Signup</a>
+            </p>
+        </div>
+    </div>
+</body>
+
+</html>

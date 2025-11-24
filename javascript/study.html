@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="name"></div>
+    <script>
+        const name = document.getElementById('name');
+
+        const ele = document.createElement('h1');
+        ele.textContent = 'hacker';
+        name.appendChild(ele);
+        
+        const ulist = document.createElement('ul');
+        const li1 = document.createElement('li');
+        li1.textContent = 'Item 1';
+        const li2 = document.createElement('li');
+        li2.textContent = 'Item 2';
+        ulist.appendChild(li1);
+        ulist.appendChild(li2);
+
+        name.appendChild(ulist);
+    </script>
+</body>
+</html>

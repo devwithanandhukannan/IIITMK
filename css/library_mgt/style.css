@@ -1,0 +1,308 @@
+/* ========= GLOBAL ========= */
+body {
+  font-family: "Segoe UI", Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  color: #222;
+  background-color: #f8f8f8;
+}
+
+h1, h3 { margin: 0; }
+
+/* ========= HEADERS ========= */
+header {
+  color: white;
+  text-align: center;
+  padding: 1rem;
+}
+
+.header-green { background-color: #006600; }
+.header-blue { background-color: #003366; }
+.header-orange { background-color: #8a4b00; }
+.header-pink { background-color: #8b0055; }
+
+/* Flex header for view_books */
+.header-flex {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1000px;
+  margin: auto;
+  padding: 0 1rem;
+}
+
+.btn-link {
+  background: white;
+  color: #8b0055;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: 0.3s;
+}
+.btn-link:hover { background: #f2dce8; }
+
+/* ========= CONTAINERS ========= */
+.container {
+  display: flex;
+  max-width: 900px;
+  margin: 2rem auto;
+  border-radius: 6px;
+  overflow: hidden;
+  box-shadow: 0 0 8px rgba(0,0,0,0.1);
+}
+
+.container-green { background: #f2fff2; border: 1px solid #cce5cc; }
+.container-blue { background: #f0f8ff; border: 1px solid #ccddee; }
+.container-orange { background: #fff7e6; border: 1px solid #f3d9b1; }
+.container-pink { background: #fff0f5; border: 1px solid #f4cde0; max-width: 100%; padding: 1rem; height:80vh ; }
+
+/* ========= SIDEBAR ========= */
+.sidebar {
+  width: 30%;
+  padding: 1.5rem;
+  border-right: 1px solid #ccc;
+}
+
+.sidebar-green { background: #eaffea; color: #004d00; }
+.sidebar-blue { background: #e6f2ff; color: #003366; }
+.sidebar-orange { background: #fff3d9; color: #8a4b00; }
+
+.sidebar a {
+  display: block;
+  text-decoration: none;
+  margin: 0.5rem 0;
+  font-weight: 500;
+}
+
+/* ========= MAIN CONTENT ========= */
+.main-content {
+  flex: 1;
+  padding: 2rem;
+}
+
+/* ========= FORMS ========= */
+form {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 1rem 1.5rem;
+  align-items: center;
+}
+
+form label {
+  text-align: right;
+  font-weight: 600;
+}
+
+input, select, textarea {
+  width: 100%;
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+textarea { resize: vertical; }
+
+.form-actions {
+  grid-column: 2 / 3;
+  display: flex;
+  gap: 1rem;
+}
+
+input[type="submit"],
+input[type="reset"],
+button {
+  background-color: #006600;
+  color: white;
+  border: none;
+  padding: 0.6rem 1.2rem;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background-color 0.3s;
+}
+
+button:hover,
+input[type="submit"]:hover {
+  background-color: #009900;
+}
+
+input[type="reset"] {
+  background-color: #999;
+}
+input[type="reset"]:hover {
+  background-color: #777;
+}
+
+/* Login buttons (blue) */
+.login-form input[type="submit"] { background: #003366; }
+.login-form input[type="submit"]:hover { background: #004c99; }
+
+/* Signup buttons (orange) */
+.signup-form input[type="submit"] { background: #8a4b00; }
+.signup-form input[type="submit"]:hover { background: #cc6600; }
+
+/* ========= BOOK TABLE ========= */
+.book-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: white;
+}
+
+.book-table th {
+  background: #f8d7e6;
+  color: #8b0055;
+  text-align: left;
+  padding: 10px;
+}
+
+.book-table td {
+  padding: 10px;
+  border-top: 1px solid #eee;
+  vertical-align: middle;
+}
+
+.book-table img.book-cover {
+  width: 60px;
+  height: 80px;
+  border: 1px solid #ccc;
+  border-radius: 2px;
+}
+
+/* Buttons inside table */
+.book-table button {
+  background-color: #8b0055;
+}
+.book-table button.btn-secondary {
+  background-color: #aaa;
+}
+.book-table button:hover {
+  opacity: 0.8;
+}
+
+/* ========= FOOTER ========= */
+footer {
+  text-align: center;
+  padding: 1rem;
+  font-size: 0.9rem;
+  background: #f9f9f9;
+  color: #555;
+  border-top: 1px solid #ddd;
+}
+
+/* ========= RESPONSIVE ========= */
+@media (max-width: 768px) {
+  .container { flex-direction: column; }
+  form { grid-template-columns: 1fr; }
+  form label { text-align: left; }
+  .form-actions { grid-column: 1; }
+  .header-flex { flex-direction: column; gap: 0.5rem; }
+}
+/* ========= GLOBAL ========= */
+body {
+  font-family: "Segoe UI", Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  color: #222;
+  background-color: #f8f8f8;
+}
+
+/* ========= CONTAINER CENTER ========= */
+.table-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem 0;
+  overflow-x: auto;
+}
+
+/* ========= MODERN BOOK TABLE ========= */
+.book-table.modern {
+  width: 90%;
+  max-width: 1000px;
+  border-collapse: separate;
+  border-spacing: 0;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(139, 0, 85, 0.15);
+  overflow: hidden;
+  animation: fadeIn 0.6s ease;
+}
+
+.book-table.modern thead {
+  background: linear-gradient(135deg, #ffb6c1 0%, #8b0055 100%);
+  color: white;
+}
+
+.book-table.modern th,
+.book-table.modern td {
+  text-align: left;
+  padding: 14px 16px;
+}
+
+.book-table.modern th {
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  font-size: 0.9rem;
+}
+
+.book-table.modern tbody tr {
+  border-bottom: 1px solid #f0d5e3;
+  transition: all 0.2s ease-in-out;
+}
+
+.book-table.modern tbody tr:hover {
+  background-color: #fff6fa;
+  transform: scale(1.01);
+}
+
+.book-table.modern img.book-cover {
+  width: 60px;
+  height: 80px;
+  border-radius: 6px;
+  object-fit: cover;
+  border: 2px solid #f4cde0;
+}
+
+/* Buttons inside table */
+.book-table.modern button {
+  background: #8b0055;
+  border: none;
+  padding: 0.5rem 0.9rem;
+  color: white;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.book-table.modern button:hover {
+  background: #b1006e;
+  transform: scale(1.05);
+}
+
+.book-table.modern button.btn-secondary {
+  background-color: #999;
+}
+.book-table.modern button.btn-secondary:hover {
+  background-color: #666;
+}
+
+/* ========= ANIMATION ========= */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ========= RESPONSIVE ========= */
+@media (max-width: 768px) {
+  .book-table.modern th, .book-table.modern td {
+    padding: 10px;
+    font-size: 0.85rem;
+  }
+
+  .book-table.modern img.book-cover {
+    width: 45px;
+    height: 60px;
+  }
+}

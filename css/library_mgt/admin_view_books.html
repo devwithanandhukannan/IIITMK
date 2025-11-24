@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Admin - Manage Books</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header class="header-pink">
+    <div class="header-flex">
+      <h1>Admin Book Management</h1>
+      <a href="add_book.html" class="btn-link">Add New Book</a>
+    </div>
+  </header>
+
+  <main class="catalog container-pink">
+    <div class="table-wrapper">
+      <table class="book-table modern">
+        <thead>
+          <tr>
+            <th>Cover</th>
+            <th>Title</th>
+            <th>Author</th>
+            <th>Category</th>
+            <th>Year</th>
+            <th>ISBN</th>
+            <th>Copies</th>
+            <th>Admin Actions</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr>
+            <td><img src="./images/issue_certificate.png" class="book-cover"></td>
+            <td>Rich Dad Poor Dad</td>
+            <td>Ananshu</td>
+            <td>Fiction</td>
+            <td>2020</td>
+            <td>+91 1234567890</td>
+            <td>3</td>
+            <td>
+              <button>Edit</button>
+              <button class="btn-secondary">Delete</button>
+            </td>
+          </tr>
+
+          <tr>
+            <td><img src="./images/issue_certificate.png" class="book-cover"></td>
+            <td>The Monk Who Sold His Ferrari</td>
+            <td>Robin Sharma</td>
+            <td>Self Improvement</td>
+            <td>2018</td>
+            <td>+91 2323232323</td>
+            <td>5</td>
+            <td>
+              <button>Edit</button>
+              <button class="btn-secondary">Delete</button>
+            </td>
+          </tr>
+        </tbody>
+
+      </table>
+    </div>
+  </main>
+
+  <footer><small>Library Management System</small></footer>
+</body>
+</html>

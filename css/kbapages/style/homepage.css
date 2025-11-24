@@ -1,0 +1,136 @@
+:root {
+    --primary-color: #8b46f7;
+    --secondary-color: #f3e8ff;
+    --text-primary: #5a2ea6;
+    --bg-light: #faf8ff;
+}
+
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: "Segoe UI", Arial, sans-serif;
+    background-color: var(--bg-light);
+}
+
+
+.welcome-msg {
+    background: linear-gradient(135deg, var(--secondary-color), #e8d3ff);
+    text-align: center;
+    padding: 80px 20px;
+}
+
+.welcome-msg h1 {
+    color: var(--text-primary);
+    font-size: 28px;
+    max-width: 800px;
+    margin: 0 auto 15px;
+}
+
+.welcome-msg p {
+    font-size: 18px;
+    color: #444;
+}
+
+
+.courses-tag {
+    text-align: center;
+    margin-top: 40px;
+    margin-bottom: 20px;
+}
+
+.courses-tag h3 {
+    color: var(--text-primary);
+    font-size: 22px;
+    margin-bottom: 10px;
+}
+
+.courses-tag p {
+    color: #666;
+    font-size: 15px;
+}
+
+
+.courses-card {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+    padding: 30px;
+}
+
+.card {
+    background-color: white;
+    border-radius: 10px;
+    padding: 25px 20px;
+    width: 300px;
+    text-align: center;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    transition: transform 0.2s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 6px 20px rgba(90, 46, 166, 0.15);
+}
+
+.card img {
+    width: 60px;
+    margin-bottom: 10px;
+}
+
+.card h4 {
+    color: var(--text-primary);
+    margin-bottom: 10px;
+}
+
+.card p {
+    color: #555;
+    font-size: 14px;
+    margin-bottom: 20px;
+}
+
+.card button {
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 25px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background-color 0.3s ease, transform 0.1s ease;
+}
+
+.card button:hover {
+    background-color: #9b6dfd;
+}
+
+.card button:active {
+    transform: scale(0.98);
+}
+
+
+.view-courses {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.view-courses button {
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    padding: 12px 30px;
+    border-radius: 25px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 600;
+    transition: background-color 0.3s ease, transform 0.1s ease;
+}
+
+.view-courses button:hover {
+    background-color: #9b6dfd;
+}
+
+.view-courses button:active {
+    transform: scale(0.98);
+}
