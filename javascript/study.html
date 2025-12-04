@@ -78,6 +78,117 @@
         if(x>y) console.log('x is larger')
         if(y>x) console.log('y is larger')
 
+        let numbertofindevenorodd=47 
+        if(numbertofindevenorodd%2==0){
+            document.write(`<br>${numbertofindevenorodd} is even`)
+        }else{
+            document.write(`<br>${numbertofindevenorodd} is odd`)
+        }
+
+        //write a program to check a given number is positive or negative
+        num = -100
+        if(num>=0){
+            document.write(`<br>${num} is a positive number`)
+        }else{
+            document.write(`<br>${num} is a negative number`)
+        }
+
+        // Voting eligibility using if-else condition 
+        let age = 21
+        if(age>18){
+            document.write('<br>Eligible to vote<br>')
+        }else{
+            document.write('<br>Not eligible to vote<br>')
+        }
+
+        //create a program for grade system using marks
+
+        let mark = 67
+        // if(mark>=50 && mark<=60){
+        //     document.write('C+')
+        // }else if(mark>60 && mark<=70){
+        //     document.write('B')
+        // }else if(mark>70 && mark<=80){
+        //     document.write('B+')
+        // }else if(mark>80 && mark<=90){
+        //     document.write('A')
+        // }else if(mark>90 && mark<=100){
+        //     document.write('A+')
+        // }else if(mark<50){
+        //     document.write('failed')
+        // }else{
+        //     document.write('nothing belong to this')
+        // }
+
+        if(mark<=50 && mark>=0){
+            document.write('failed')
+        }else if(mark<60){
+            document.write('C+')
+        }else if(mark<70){
+            document.write('B')
+        }else if(mark<80){
+            document.write('B+')
+        }else if(mark<90){
+            document.write('A')
+        }else if(mark<100){
+            document.write('A+')
+        }else{
+            document.write('check the input')
+        }
+
+
+
+
+        //print the digit of number
+        document.write('<br><br>')
+        let find_digit = 91
+        switch(find_digit){
+            case 1:{document.write('One');break;}
+            case 2:{document.write('Two');break;}
+            case 3:{document.write('Three');break;}
+            case 4:{document.write('Four');break;}
+            case 5:{document.write('Five');break;}
+            case 6:{document.write('Six');break;}
+            case 7:{document.write('Seven');break;}
+            case 8:{document.write('Eight');break;}
+            case 9:{document.write('Nine');break;}
+            case 10:{document.write('Ten');break;}
+            default :{document.write('invalid input')}
+        }
+
+        let x1=10,y1=20;
+        choice = '+'
+        switch(choice){
+            case '+':{document.write(`<br>${x1}+${y1}=${x1+y1}`);break;}
+            case '-':{document.write(`<br>${x1}+${y1}=${x1-y1}`);break;}
+            case '*':{document.write(`<br>${x1}+${y1}=${x1*y1}`);break;}
+            case '/':{document.write(`<br>${x1}+${y1}=${x1/y1}`);break;}
+            default:{document.writeln('invalid operator')}
+        }
+
+        document.write('<br><br>')
+        let large =BigInt(18364028374018237409283740928375092475097)
+        let choices= true
+        switch(typeof choices){
+            case 'number':{document.writeln('number');break;}
+            case 'string':{document.writeln('string');break;}
+            case 'boolean':{document.writeln('boolean');break;}
+            case 'object':{document.writeln('object');break;}
+            case 'bigint':{document.writeln('bigint');break;}
+            default:{document.writeln('invaid choice')}
+        }
+
+        let data =10
+        console.log(data++);
+        console.log(data++);
+        let data1= 10
+        console.log(++data1)
+        
+        
+        
+
+
+
     </script>
 </body>
 </html>

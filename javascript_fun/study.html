@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input id="input_name">
+    <h1 id="name"></h1>
+    <button onclick="callname()">click me</button>
+    <br><br><br>
+    <form action="" onsubmit="calAge(event)">
+        <label for="age">Age</label>
+        <input type="number" name="age" id="age" min="0">
+        <button type="submit">submit</button>
+    </form>
+    <p id="result"></p>
+    <script>
+        function greeting(name){
+            console.log( `Hello, ${name}! Welcome to the JavaScript world.`);
+        }
+        greeting('Anandhu');
+        function arithmeticOperations(a, b){
+            return {
+                sum: a + b,
+                difference: a - b,
+                product: a * b,
+                quotient: a / b
+            };
+        }
+        const results = arithmeticOperations(20, 5);
+        console.log(`Sum: ${results.sum}`);
+        console.log(`Difference: ${results.difference}`);
+        console.log(`Product: ${results.product}`);
+        console.log(`Quotient: ${results.quotient}`);
+
+        function callname(){
+            document.getElementById('name').textContent=document.getElementById('input_name').value
+        }
+
+        let person = {
+            name :"anandhu",
+            age:12,
+            address:"kerala",
+            greeting:()=>{
+                console.log(`Hello ${this.name}`);
+            }
+        }
+        console.log(person.name);
+        console.log(person.age);
+        console.log(person.address);
+        
+        console.log(this);
+        function outer(){
+            let outer_data = 'outer'
+            function inner(){
+                console.log(outer_data);
+                console.log('inner');
+                
+            }
+            inner()
+        }
+        outer();
+
+
+        function add(a,b){
+            return a+b
+        }
+
+        let add_arrow = (a,b) => {
+            return a+b
+        }
+
+        console.log(add(10,5));
+        console.log(add_arrow(10,5));
+        
+        // let data =setTimeout(() => {
+        //     console.log('hacking');
+            
+        // }, 5000);
+        // console.log(data);
+
+        function calAge(e){
+            e.preventDefault();
+            const age = document.getElementById('age').value;
+            const messageElement = document.getElementById('result');
+            if(age){
+                messageElement.innerText=`you are ${age}`
+            }else{
+                messageElement.innerText="Enter a valid age"
+            }
+        }
+
+        
+        
+
+    </script>
+
+</body>
+</html>

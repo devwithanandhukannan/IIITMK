@@ -43,6 +43,7 @@ body{
     height: 80%;
     position: relative;
     box-shadow: inset 2px -2px 15px 2px #29292b;
+    overflow: hidden;
 }
 .top{
     position: absolute;
@@ -50,6 +51,7 @@ body{
     left: 5px;
     color: #343E4A;
 }.disp-res{
+    overflow: hidden;
     position: absolute;
     right: 10px;
     bottom: 10px;

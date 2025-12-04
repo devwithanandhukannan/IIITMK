@@ -5,7 +5,7 @@
     <link rel="stylesheet" href="calculator.css">
 </head>
 <body>
-    <div class="container">
+     <div class="container">
         <div class="brand-name">
             <span>amazon basics</span>
             <span>112 STEPS CHECK & CORRECT</span>
@@ -16,9 +16,7 @@
                 <div class="top">
                     <span>01</span>
                 </div>
-                <div class="disp-res">
-                    1234567890
-                </div>
+                <div class="disp-res" id="disp-res">0</div>
             </div>
         </div>
 
@@ -37,42 +35,51 @@
                 <div class="frd-controller-btn blk">CORRECT</div>
                 <div class="frd-controller-btn blk">AUTO REPLAY</div>
             </div>
-            <img src="./assets/images/solar.png" alt="" srcset="">
+            <img src="./assets/images/solar.png" alt="">
         </div>
 
         <div class="number-pad-parent">
             <div class="number-pads">
                 <div class="number-pads-value blk">RATE</div>
-                <div class="number-pads-value num-btn">7</div>
-                <div class="number-pads-value num-btn">8</div>
-                <div class="number-pads-value num-btn">9</div>
+                <div class="number-pads-value num-btn" onclick="clicked('7')">7</div>
+                <div class="number-pads-value num-btn" onclick="clicked('8')">8</div>
+                <div class="number-pads-value num-btn" onclick="clicked('9')">9</div>
                 <div class="number-pads-value blk">-GST</div>
-                <div class="number-pads-value num-btn">4</div>
-                <div class="number-pads-value num-btn">5</div>
-                <div class="number-pads-value num-btn">6</div>
+
+                <div class="number-pads-value num-btn" onclick="clicked('4')">4</div>
+                <div class="number-pads-value num-btn" onclick="clicked('5')">5</div>
+                <div class="number-pads-value num-btn" onclick="clicked('6')">6</div>
                 <div class="number-pads-value blk">+GST</div>
-                <div class="number-pads-value num-btn">1</div>
-                <div class="number-pads-value num-btn">2</div>
-                <div class="number-pads-value num-btn">3</div>
+
+                <div class="number-pads-value num-btn" onclick="clicked('1')">1</div>
+                <div class="number-pads-value num-btn" onclick="clicked('2')">2</div>
+                <div class="number-pads-value num-btn" onclick="clicked('3')">3</div>
                 <div class="number-pads-value blk">MU</div>
-                <div class="number-pads-value num-btn">0</div>
-                <div class="number-pads-value num-btn">00</div>
-                <div class="number-pads-value num-btn">.</div>
+
+                <div class="number-pads-value num-btn" onclick="clicked('0')">0</div>
+                <div class="number-pads-value num-btn" onclick="clicked('00')">00</div>
+                <div class="number-pads-value num-btn" onclick="clicked('.')">.</div>
             </div>
+
             <div class="operators">
                 <div class="operators-value blk">√</div>
                 <div class="operators-value blk">%</div>
-                <div class="operators-value"><i>ON/C</i></div>
-                <div class="operators-value blk">x</div>
-                <div class="operators-value blk">÷</div>
+
+                <div class="operators-value" onclick="cleardisplay()"><i>ON/C</i></div>
+
+                <div class="operators-value blk" onclick="clickedOper('x')">x</div>
+                <div class="operators-value blk" onclick="clickedOper('÷')">÷</div>
                 <div class="operators-value blk">MRC</div>
-                <div class="operators-value plus-btn blk">+</div>
-                <div class="operators-value blk">-</div>
+
+                <div class="operators-value blk plus-btn" onclick="clickedOper('+')">+</div>
+                <div class="operators-value blk" onclick="clickedOper('-')">-</div>
                 <div class="operators-value blk">M-</div>
-                <div class="operators-value blk">=</div>
+
+                <div class="operators-value blk" onclick="clickedOper('=')">=</div>
                 <div class="operators-value blk">M+</div>
             </div>
         </div>
     </div>
+    <!-- <script src="./assets/script.js"></script> -->
 </body>
 </html>

@@ -103,12 +103,6 @@
         output.innerHTML += `<p>Circumference of circle: ${2*Math.PI*radius}</p>`;
         output.innerHTML += `<p>Perimeter of triangle: ${base + height + Math.sqrt(base*base + height*height)}</p>`;
 
-        // 11. Simple interest & compound interest
-        let P = 1000, R = 5, T = 2;
-        let SI = (P*R*T)/100;
-        let CI = P * Math.pow((1 + R/100), T) - P;
-        output.innerHTML += `<p>Simple Interest: ${SI}</p>`;
-        output.innerHTML += `<p>Compound Interest: ${CI.toFixed(2)}</p>`;
 
         // 12. Largest among two numbers
         a = 15; b = 20;
@@ -128,6 +122,8 @@
         let age = 18;
         let eligible = age >= 18 ? "Eligible to vote" : "Not eligible to vote";
         output.innerHTML += `<p>Age ${age}: ${eligible}</p>`;
+
+
     </script>
 </body>
 </html>
