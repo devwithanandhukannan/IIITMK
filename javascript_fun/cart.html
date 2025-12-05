@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>Shopping cart</h1>
+    <p>Products are:<br><span id="product_price"></span></p>
+    <label for="input_attr">Attribute</label>
+    <input type="text" name="" id="input_attr">
+    <label for="input_val">Value</label>
+    <input type="text" name="" id="input_val">
+    <button onclick="save()">save</button>
+    <table id="data"></table>
+    <p>total price: <span id="total_price"></span></p>
+    <script>
+        const attr = document.getElementById('input_attr')
+        const val = document.getElementById('input_val')
+        const disp_price = document.getElementById('product_price')
+        let pricelister = ''
+        let cart = new Map();
+        const price= {
+            "Apple":100,
+            "Orange":200,
+            "Banana":90
+        }
+        for(let key in price){
+            pricelister+=`| ${key} = ${price[key]} `
+        }
+
+        cart.set("Apple", 2);
+        cart.set("Orange", 1);
+        let data = '';
+
+        function disp() {
+            cart.forEach((value, key, map) => {
+                if(Array.isArray(value)){
+                    data +=`<tr>
+                                <td>${key}</td>
+                                <td>${value.join(' , ')}</td>
+                                <td><button onclick="del('${key}')">delete</button></td>
+                                <td><button onclick="edit('${key}')">Edit</button><br></td>
+                            </tr>`
+                }else{
+                    data += `<tr>
+                                <td>${key}</td>
+                                <td>${value}</td> 
+                                <td><button onclick="del('${key}')">delete</button></td>
+                                <td><button onclick="edit('${key}')">Edit</button><br></td>
+                            </tr>`;
+                }
+                
+            })
+            document.getElementById('data').innerHTML = data
+
+        }
+
+        function edit(key){
+            attr.value=key
+            val.value=cart.get(key)
+        }
+
+        function del(key) {
+            cart.delete(key)
+            data = ''
+            disp()
+            cal_price()
+        }
+
+        function save(){
+            if(attr.value!='' && val.value!=''){
+                cart.set(attr.value,val.value)
+                data = ''
+                attr.value= ''
+                val.value=''
+                disp()
+                cal_price()
+            }else{
+                alert('all field must be fill')
+            }
+            
+        }
+
+        function list_price(){
+            disp_price.textContent= pricelister
+        }
+
+        function cal_price(){
+            let price_=0
+            cart.forEach((value,key,map)=>{
+                price_+= price[key]*value
+            })
+            let price_field = document.getElementById('total_price')
+            price_field.textContent=''
+            price_field.textContent=price_
+        }
+        disp()
+        cal_price()
+        
+        list_price()
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>Personal data</h1>
+    <label for="input_attr">Attribute</label>
+    <input type="text" name="" id="input_attr">
+    <label for="input_val">Value</label>
+    <input type="text" name="" id="input_val">
+    <button onclick="save()">save</button>
+    <table id="data"></table>
+    <script>
+        const attr = document.getElementById('input_attr')
+        const val = document.getElementById('input_val')
+        let person = new Map();
+        person.set("Name", "Anandhu");
+        person.set("Age", 22);
+        person.set("Place", "Senapathy");
+        person.set("skills",['c++','java','c','js','jquery'])
+        let data = '';
+
+        function disp() {
+            person.forEach((value, key, map) => {
+                if(Array.isArray(value)){
+                    data +=`<tr>
+                                <td>${key}</td>
+                                <td>${value.join(' , ')}</td>
+                                <td><button onclick="del('${key}')">delete</button></td>
+                                <td><button onclick="edit('${key}')">Edit</button><br></td>
+                            </tr>`
+                }else{
+                    data += `<tr>
+                                <td>${key}</td>
+                                <td>${value}</td> 
+                                <td><button onclick="del('${key}')">delete</button></td>
+                                <td><button onclick="edit('${key}')">Edit</button><br></td>
+                            </tr>`;
+                }
+                
+            })
+            document.getElementById('data').innerHTML = data
+
+        }
+
+        function edit(key){
+            attr.value=key
+            val.value=person.get(key)
+        }
+
+        function del(key) {
+            person.delete(key)
+            data = ''
+            disp()
+        }
+
+        function save(){
+            if(attr.value!='' && val.value!=''){
+                person.set(attr.value,val.value)
+                data = ''
+                attr.value= ''
+                val.value=''
+                disp()
+            }else{
+                alert('all field must be fill')
+            }
+            
+        }
+        disp()
+    </script>
+</body>
+
+</html>

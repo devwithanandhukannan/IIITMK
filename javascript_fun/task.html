@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Task Manager</h1>
+    <label for="task">enter the task</label>
+    <input type="text" name="" id="task">
+    <button onclick="save()">Add</button>
+    <ul id="list"></ul>
+
+    <script>
+        function save(){
+            let data = document.getElementById('task');
+            let list = document.getElementById('list');
+            if(data.value.trim()!=''){
+                const li = document.createElement('li');
+                const del_btn = document.createElement('button')
+                del_btn.textContent= 'remove'
+                del_btn.onclick = () =>{
+                    list.removeChild(li)
+                }
+                li.textContent = data.value.trim();
+                li.appendChild(del_btn)
+                list.appendChild(li);
+                data.value = ' ';
+            }
+            
+        }
+    </script>
+</body>
+</html>
