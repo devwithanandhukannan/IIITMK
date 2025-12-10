@@ -1,0 +1,18 @@
+{
+  "name": "node",
+  "version": "1.0.0",
+  "description": "",
+  "types": "module",
+  "license": "ISC",
+  "author": "",
+  "type": "commonjs",
+  "main": "sum.js",
+  "scripts": {
+    "start":"nodemon sum.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "nodemon": "^3.1.11"
+  },
+  "devDependencies": {}
+}
