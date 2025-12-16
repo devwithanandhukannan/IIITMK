@@ -1,0 +1,460 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>Hangout – Dashboard</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="min-h-screen bg-black text-white antialiased">
+  <header class="border-b border-white/10 bg-black/60 backdrop-blur">
+    <div class="px-4 sm:px-6 lg:px-8 py-3 flex items-center justify-between">
+      <div class="flex items-center gap-2">
+        <span class="font-semibold tracking-tight text-sm sm:text-base">Hangout > </span>
+         <span class="text-xs sm:text-sm text-gray-300">Dashboard</span>
+      </div>
+      <div class="space-x-4 text-xs">
+        <a href="./explore.html" class="bg-gray-800 px-5 py-2 rounded-full hover:bg-white hover:text-black">Feed</a>
+        <a href="./post.html" class="bg-gray-800 px-5 py-2 rounded-full hover:bg-white hover:text-black">Post</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- MAIN – full-width layout -->
+  <main class="px-2 sm:px-4 lg:px-6 py-4 h-[calc(100vh-3.25rem)]">
+    <div class="h-full flex gap-3 sm:gap-4">
+      <!-- LEFT -->
+      <aside
+        class="w-60 sm:w-64 flex flex-col bg-white/5 border border-white/10 rounded-2xl backdrop-blur-xl shadow-[0_0_40px_rgba(0,0,0,0.8)]">
+        <!-- search -->
+        <div class="p-3 border-b border-white/10">
+          <div class="text-xs font-semibold mb-2 text-gray-100">
+            Interest history
+          </div>
+          <div class="flex items-center gap-2 rounded-xl bg-black/60 border border-white/15 px-2.5 py-1.5">
+            <input id="historySearch" type="text" placeholder="Search interests"
+              class="bg-transparent border-none outline-none text-xs w-full placeholder:text-gray-500" />
+          </div>
+        </div>
+
+        <!-- history list -->
+         <a href="./chat_history.html">
+            <div id="historyList" class="flex-1 overflow-y-auto px-2 py-2 space-y-1 text-sm">
+            
+        </div>
+         </a>
+        
+
+        <!-- user profile bottom -->
+        <div class="relative border-t border-white/10 px-3 py-2.5 flex items-center justify-between">
+          <button id="profileButton" class="flex items-center gap-2 text-xs w-full text-left">
+            <div id="profileAvatar"
+              class="h-9 w-9 rounded-full flex items-center justify-center bg-white text-black font-semibold text-sm">
+              U
+            </div>
+            <div class="flex-1">
+              <div id="profileName" class="font-semibold text-gray-50 truncate">
+                User Name
+              </div>
+              <div id="profileHandle" class="text-[11px] text-gray-400 truncate">
+                @handle
+              </div>
+            </div>
+            <span class="text-gray-400 text-xs">⋮</span>
+          </button>
+
+          <!-- profile menu -->
+          <div id="profileMenu"
+            class="hidden absolute bottom-12 left-3 w-40 bg-black border border-white/10 rounded-xl shadow-lg text-xs overflow-hidden">
+            <a href="./settings.html" class="w-full text-left px-3 py-2 hover:bg-white/5 transition-colors">
+              Settings
+            </a>
+            <button
+              class="w-full text-left px-3 py-2 text-red-300 hover:bg-white/5 transition-colors">
+              Logout
+            </button>
+          </div>
+        </div>
+      </aside>
+
+      <!-- CENTER -->
+      <section
+        class="flex-1 flex flex-col bg-white/5 border border-white/50 rounded-2xl backdrop-blur-xl shadow-[0_0_40px_rgba(0,0,0,0.8)] px-4 sm:px-6 py-4 space-y-5">
+        <!-- title -->
+        <div class="flex items-center justify-between">
+          <div>
+            <h2 class="text-sm sm:text-base font-semibold">
+              Your Hangout space
+            </h2>
+            <p class="text-[11px] sm:text-xs text-gray-300">
+              Add interests, then hit Go to start searching.
+            </p>
+          </div>
+        </div>
+
+        <!-- interests input -->
+        <div class="space-y-3">
+          <div class="flex items-center justify-between">
+            <h3 class="text-xs font-semibold uppercase tracking-[0.2em]">
+              Interests
+            </h3>
+            <span class="text-[11px] text-gray-400">Use <span class="font-mono">#</span> tags</span>
+          </div>
+
+          <div class="flex flex-wrap gap-2">
+            <input id="interestInput" type="text" placeholder="#movies #gaming #music"
+              class="flex-1 min-w-[180px] rounded-xl bg-black/60 border border-white/20 px-3 py-2 text-xs outline-none focus:border-white placeholder:text-gray-500" />
+            <button id="addInterestBtn"
+              class="px-4 py-2 rounded-xl text-xs font-semibold bg-white text-black hover:bg-gray-100 transition">
+              Add interest
+            </button>
+          </div>
+
+          <div id="interestTags" class="flex flex-wrap gap-2 text-[11px]"></div>
+        </div>
+
+        <!-- Go + mic/cam controls -->
+        <div class="flex-1 flex flex-col items-center justify-center gap-4">
+          <!-- Go button -->
+          <a id="goButton" href="./chat.html"
+            class="w-24 h-24 sm:w-28 sm:h-28 rounded-full bg-white text-black text-xl sm:text-2xl font-semibold flex items-center justify-center hover:scale-105 hover:bg-gray-100 transition-transform">
+            Go
+          </a>
+
+          <!-- mic & camera toggles -->
+          <div class="flex flex-wrap items-center justify-center gap-3">
+            <button id="micToggle"
+              class="px-4 py-1.5 rounded-full text-xs bg-black/60 border border-white/30 flex items-center gap-1 text-white">
+              <span>🎙</span>
+              <span id="micLabel">Mic enabled</span>
+            </button>
+            <button id="camToggle"
+              class="px-4 py-1.5 rounded-full text-xs bg-black/60 border border-white/30 flex items-center gap-1 text-white">
+              <span>📹</span>
+              <span id="camLabel">Video enabled</span>
+            </button>
+          </div>
+
+          <p id="goStatus" class="text-[11px] text-gray-300 text-center mt-1">
+            Ready to start a Hangout.
+          </p>
+        </div>
+      </section>
+
+      <!-- RIGHT: friends -->
+      <aside
+        class="w-60 sm:w-64 hidden md:flex flex-col bg-white/5 border border-white/10 rounded-2xl backdrop-blur-xl shadow-[0_0_40px_rgba(0,0,0,0.8)]">
+        <div class="px-3 py-3 border-b border-white/10 flex items-center justify-between">
+          <div>
+            <div class="text-xs font-semibold uppercase tracking-[0.2em]">
+              Friends
+            </div>
+            <div class="text-[11px] text-gray-400">
+              Who’s around right now
+            </div>
+          </div>
+        </div>
+
+        <div id="friendList" class="flex-1 overflow-y-auto px-2 py-2 space-y-1 text-sm"></div>
+      </aside>
+    </div>
+  </main>
+
+  <script>
+    const dashboardData = {
+      user: {
+        name: "Alex Night",
+        handle: "@alex",
+        avatarColor: "", // we style avatar directly in HTML for black/white theme
+      },
+      history: [
+        {
+          id: 1,
+          interest: "#gaming",
+          date: "Today",
+          sessions: 8,
+          lastActive: "03:12 AM",
+        },
+        {
+          id: 2,
+          interest: "#music",
+          date: "Today",
+          sessions: 4,
+          lastActive: "01:27 AM",
+        },
+        {
+          id: 3,
+          interest: "#coding",
+          date: "Yesterday",
+          sessions: 6,
+          lastActive: "11:50 PM",
+        },
+        {
+          id: 4,
+          interest: "#coffeeTalk",
+          date: "Mon",
+          sessions: 3,
+          lastActive: "10:03 PM",
+        },
+      ],
+      friends: [
+        {
+          id: 1,
+          name: "Jordan",
+          status: "Chilling online",
+          online: true,
+          color: "bg-gray-100",
+        },
+        {
+          id: 2,
+          name: "Taylor",
+          status: "Watching something",
+          online: false,
+          color: "bg-gray-300",
+        },
+        {
+          id: 3,
+          name: "Riley",
+          status: "In a call",
+          online: true,
+          color: "bg-gray-200",
+        },
+        {
+          id: 4,
+          name: "Casey",
+          status: "Away",
+          online: false,
+          color: "bg-gray-400",
+        },
+      ],
+      interests: ["#music", "#gaming", "#lateNightChats"],
+    };
+
+    document.addEventListener("DOMContentLoaded", () => {
+      /* ------- Profile (bottom left) ------- */
+      const profileName = document.getElementById("profileName");
+      const profileHandle = document.getElementById("profileHandle");
+      const profileAvatar = document.getElementById("profileAvatar");
+      const profileButton = document.getElementById("profileButton");
+      const profileMenu = document.getElementById("profileMenu");
+
+      profileName.textContent = dashboardData.user.name;
+      profileHandle.textContent = dashboardData.user.handle;
+      profileAvatar.textContent = dashboardData.user.name[0] || "U";
+      if (dashboardData.user.avatarColor) {
+        profileAvatar.classList.add(...dashboardData.user.avatarColor.split(" "));
+      }
+
+      profileButton.addEventListener("click", (e) => {
+        e.stopPropagation();
+        profileMenu.classList.toggle("hidden");
+      });
+
+      document.addEventListener("click", () => {
+        profileMenu.classList.add("hidden");
+      });
+
+      /* ------- Interest history (left) ------- */
+      const historyList = document.getElementById("historyList");
+      const historySearch = document.getElementById("historySearch");
+
+      function renderHistory(filter = "") {
+        historyList.innerHTML = "";
+        const lower = filter.toLowerCase();
+
+        dashboardData.history
+          .filter((h) => h.interest.toLowerCase().includes(lower))
+          .forEach((entry) => {
+            const row = document.createElement("div");
+            row.className =
+              "rounded-xl px-2.5 py-2 hover:bg-white/10 transition-colors cursor-pointer";
+
+            const top = document.createElement("div");
+            top.className =
+              "flex items-center justify-between text-xs font-semibold";
+            const interest = document.createElement("span");
+            interest.textContent = entry.interest;
+            const date = document.createElement("span");
+            date.className = "text-[10px] text-gray-400";
+            date.textContent = entry.date;
+            top.appendChild(interest);
+            top.appendChild(date);
+
+            const bottom = document.createElement("div");
+            bottom.className =
+              "mt-1 flex items-center justify-between text-[11px] text-gray-200";
+
+            const stats = document.createElement("span");
+            stats.textContent = `${entry.sessions} session${entry.sessions !== 1 ? "s" : ""
+              }`;
+
+            const last = document.createElement("span");
+            last.className = "text-gray-400";
+            last.textContent = `Last: ${entry.lastActive}`;
+
+            bottom.appendChild(stats);
+            bottom.appendChild(last);
+
+            row.appendChild(top);
+            row.appendChild(bottom);
+
+            historyList.appendChild(row);
+          });
+
+        if (!historyList.children.length) {
+          const empty = document.createElement("div");
+          empty.className =
+            "text-[11px] text-gray-400 px-2 py-4 text-center";
+          empty.textContent = "No history for that interest yet.";
+          historyList.appendChild(empty);
+        }
+      }
+      renderHistory();
+      historySearch.addEventListener("input", (e) =>
+        renderHistory(e.target.value)
+      );
+
+      /* ------- Friends (right) ------- */
+      const friendList = document.getElementById("friendList");
+
+      dashboardData.friends.forEach((friend) => {
+        const row = document.createElement("div");
+        row.className =
+          "flex items-center gap-2 rounded-xl px-2.5 py-2 hover:bg-white/10 transition-colors";
+
+        const avatar = document.createElement("div");
+        avatar.className =
+          "h-8 w-8 rounded-full flex items-center justify-center text-xs font-semibold text-black";
+        avatar.classList.add(...friend.color.split(" "));
+        avatar.textContent = friend.name[0] || "?";
+
+        const main = document.createElement("div");
+        main.className = "flex-1 min-w-0";
+
+        const nameRow = document.createElement("div");
+        nameRow.className = "flex items-center gap-1";
+
+        const nameEl = document.createElement("div");
+        nameEl.className = "text-xs font-semibold truncate";
+        nameEl.textContent = friend.name;
+
+        const dot = document.createElement("span");
+        dot.className =
+          "h-1.5 w-1.5 rounded-full " +
+          (friend.online ? "bg-gray-100" : "bg-gray-500");
+
+        nameRow.appendChild(nameEl);
+        nameRow.appendChild(dot);
+
+        const status = document.createElement("div");
+        status.className = "text-[11px] text-gray-400 truncate";
+        status.textContent = friend.status;
+
+        main.appendChild(nameRow);
+        main.appendChild(status);
+
+        row.appendChild(avatar);
+        row.appendChild(main);
+
+        friendList.appendChild(row);
+      });
+
+      /* ------- Interests (center) ------- */
+      const interestContainer = document.getElementById("interestTags");
+      const interestInput = document.getElementById("interestInput");
+      const addInterestBtn = document.getElementById("addInterestBtn");
+
+      function renderInterests() {
+        interestContainer.innerHTML = "";
+        dashboardData.interests.forEach((tag) => {
+          const span = document.createElement("span");
+          span.className =
+            "px-3 py-1 rounded-full bg-white/5 border border-white/20 text-[11px]";
+          span.textContent = tag;
+          interestContainer.appendChild(span);
+        });
+      }
+      renderInterests();
+
+      function addInterestFromInput() {
+        let value = interestInput.value.trim();
+        if (!value) return;
+        if (!value.startsWith("#")) value = "#" + value;
+        if (!dashboardData.interests.includes(value)) {
+          dashboardData.interests.push(value);
+          renderInterests();
+        }
+        interestInput.value = "";
+      }
+
+      addInterestBtn.addEventListener("click", addInterestFromInput);
+      interestInput.addEventListener("keydown", (e) => {
+        if (e.key === "Enter") {
+          e.preventDefault();
+          addInterestFromInput();
+        }
+      });
+
+      /* ------- Go button + mic/cam toggles ------- */
+      const goButton = document.getElementById("goButton");
+      const goStatus = document.getElementById("goStatus");
+
+      const micToggle = document.getElementById("micToggle");
+      const camToggle = document.getElementById("camToggle");
+      const micLabel = document.getElementById("micLabel");
+      const camLabel = document.getElementById("camLabel");
+
+      let micOn = true;
+      let camOn = true;
+
+      function updateMic() {
+        micLabel.textContent = micOn ? "Mic enabled" : "Mic muted";
+        micToggle.classList.toggle("bg-white", micOn);
+        micToggle.classList.toggle("text-black", micOn);
+        micToggle.classList.toggle("border-white", micOn);
+        micToggle.classList.toggle("bg-black/60", !micOn);
+        micToggle.classList.toggle("text-white", !micOn);
+        micToggle.classList.toggle("border-white/30", !micOn);
+      }
+
+      function updateCam() {
+        camLabel.textContent = camOn ? "Video enabled" : "Video disabled";
+        camToggle.classList.toggle("bg-white", camOn);
+        camToggle.classList.toggle("text-black", camOn);
+        camToggle.classList.toggle("border-white", camOn);
+        camToggle.classList.toggle("bg-black/60", !camOn);
+        camToggle.classList.toggle("text-white", !camOn);
+        camToggle.classList.toggle("border-white/30", !camOn);
+      }
+
+      updateMic();
+      updateCam();
+
+      micToggle.addEventListener("click", () => {
+        micOn = !micOn;
+        updateMic();
+      });
+
+      camToggle.addEventListener("click", () => {
+        camOn = !camOn;
+        updateCam();
+      });
+
+      goButton.addEventListener("click", () => {
+        const interests =
+          dashboardData.interests.length > 0
+            ? dashboardData.interests.join(", ")
+            : "no interests";
+        goStatus.textContent =
+          `Searching for a match with ${interests} · ` +
+          `Mic ${micOn ? "enabled" : "muted"} · ` +
+          `Video ${camOn ? "enabled" : "disabled"}`;
+      });
+    });
+  </script>
+</body>
+
+</html>

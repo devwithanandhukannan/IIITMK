@@ -1,0 +1,354 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>Hangout – Video Mode</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="min-h-screen bg-black text-white antialiased transition-colors duration-500">
+  <!-- HEADER -->
+  <header class="w-full border-b border-white/10 bg-black/40 backdrop-blur">
+    <div class="px-4 sm:px-6 lg:px-8 py-3 flex items-center justify-between">
+      <!-- left: back + brand -->
+      <div class="flex items-center gap-3">
+        <button id="backButton"
+          class="h-8 w-8 flex items-center justify-center rounded-full border border-white/40 text-sm hover:bg-white hover:text-black transition">
+          &larr;
+        </button>
+        <span class="font-semibold tracking-tight text-sm sm:text-base">Hangout</span>
+      </div>
+
+      <!-- right: skip + mode toggle -->
+      <div class="flex items-center gap-2">
+        <button  class="px-3 py-1 rounded-full border border-white text-xs hover:bg-white hover:text-black transition"> save chat</button>
+        <button id="skipButton"
+          class="px-3 py-1 rounded-full border border-white text-xs hover:bg-white hover:text-black transition">
+          Skip
+        </button>
+        <button id="modeToggle"
+          class="px-3 py-1 rounded-full border border-white text-xs hover:bg-white hover:text-black transition">
+          Switch to text chat
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- MAIN -->
+  <main class="px-4 sm:px-6 lg:px-8 py-4 h-[calc(100vh-3.25rem)]">
+    <div id="layout" class="h-full flex flex-col lg:flex-row gap-4">
+      <!-- VIDEO PANEL -->
+      <section id="videoPanel"
+        class="flex-1 flex flex-col bg-white/5 border border-white/15 rounded-3xl backdrop-blur-xl shadow-[0_0_40px_rgba(255,255,255,0.1)] px-4 sm:px-6 py-4">
+        <!-- profile + interests -->
+        <div class="flex items-center justify-between">
+          <div class="flex items-center gap-3">
+            <div
+              class="h-10 w-10 rounded-full bg-white text-black flex items-center justify-center text-sm font-semibold">
+              S
+            </div>
+            <div>
+              <div class="flex items-center gap-2">
+                <span class="font-semibold text-sm sm:text-base">SkylerNova</span>
+                <button
+                  class="px-2 py-0.5 rounded-full border border-white text-[11px] hover:bg-white hover:text-black transition">
+                  Follow
+                </button>
+              </div>
+              <p class="text-[11px] sm:text-xs text-gray-300 mt-1 max-w-md">
+                Loves late‑night coding, sci‑fi shows, and random internet facts.
+              </p>
+            </div>
+          </div>
+          <div id="interestChips" class="hidden sm:flex flex-wrap gap-2">
+            <span class="px-3 py-1 rounded-full bg-white text-black text-[11px]">#coding</span>
+            <span class="px-3 py-1 rounded-full bg-white text-black text-[11px]">#fact</span>
+          </div>
+        </div>
+
+        <!-- small interests row for mobile -->
+        <div class="sm:hidden flex flex-wrap gap-2 mt-3">
+          <span class="px-3 py-1 rounded-full bg-white text-black text-[11px]">#coding</span>
+          <span class="px-3 py-1 rounded-full bg-white text-black text-[11px]">#fact</span>
+        </div>
+
+        <!-- video area -->
+        <div class="flex-1 mt-4 flex flex-col">
+          <div
+            class="flex-1 rounded-2xl bg-white/10 border border-white/20 relative overflow-hidden flex items-center justify-center">
+            <!-- remote video placeholder -->
+            <div
+              class="absolute inset-0 opacity-40 bg-[radial-gradient(circle_at_10%_10%,rgba(255,255,255,0.4),transparent_55%)]">
+            </div>
+            <div class="relative text-xs sm:text-sm text-gray-100 text-center">
+              Their camera will appear here
+            </div>
+
+            <!-- local preview -->
+            <div id="localPreview"
+              class="absolute bottom-3 right-3 w-28 h-20 rounded-xl bg-black/70 border border-white/20 flex items-center justify-center text-[11px]">
+              Your camera
+            </div>
+            <div id="cameraOffOverlay"
+              class="hidden absolute bottom-3 right-3 w-28 h-20 rounded-xl bg-black/80 border border-white/30 flex items-center justify-center text-[11px]">
+              Camera off
+            </div>
+          </div>
+
+          <!-- controls -->
+          <div class="mt-4 flex items-center justify-between gap-3">
+            <div class="flex items-center gap-2 sm:gap-3 text-xs">
+              <!-- mic toggle -->
+              <button id="micToggle"
+                class="px-3 py-1.5 rounded-full bg-white/10 border border-white/30 flex items-center gap-1">
+                <span>🎙</span>
+                <span id="micLabel">Mic enabled</span>
+              </button>
+              <!-- camera toggle -->
+              <button id="camToggle"
+                class="px-3 py-1.5 rounded-full bg-white/10 border border-white/30 flex items-center gap-1">
+                <span>📹</span>
+                <span id="camLabel">Video enabled</span>
+              </button>
+            </div>
+
+            <div class="flex items-center gap-2 sm:gap-3">
+              <!-- like -->
+              <button id="likeButton"
+                class="h-9 w-9 flex items-center justify-center rounded-full border border-gray-400 hover:bg-white hover:text-black transition text-sm">
+                ♡
+              </button>
+              <!-- end -->
+              <a
+                href="./dashboard.html"
+                class="px-4 py-1.5 rounded-full bg-white text-black text-xs font-semibold hover:bg-gray-200 transition">
+                End
+            </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- CHAT PANEL -->
+      <section id="chatPanel"
+        class="w-full lg:w-1/3 flex flex-col bg-white/5 border border-white/15 rounded-3xl backdrop-blur-xl shadow-[0_0_40px_rgba(255,255,255,0.1)] px-4 sm:px-5 py-4">
+        <div class="flex items-center justify-between mb-3">
+          <h2 class="text-sm font-semibold">Text chat</h2>
+        </div>
+
+        <div id="messageArea" class="flex-1 space-y-3 overflow-y-auto text-sm pr-1">
+          <div class="flex justify-start">
+            <div class="max-w-xs rounded-2xl px-3 py-2 bg-gray-200 text-black">
+              Hey! Just checking in. Did you finish the design mockups?
+            </div>
+          </div>
+          <div class="text-[10px] text-gray-500 pl-1">10:00</div>
+
+          <div class="flex justify-end">
+            <div class="max-w-xs rounded-2xl px-3 py-2 bg-gray-900 text-white">
+              Almost done! I’ll send them over in a bit.
+            </div>
+          </div>
+          <div class="text-[10px] text-gray-500 text-right pr-1">10:02</div>
+        </div>
+
+        <!-- input -->
+        <div class="mt-3 pt-2 border-t border-gray-800">
+          <div class="flex items-center gap-2">
+            <button id="openUpload"
+              class="h-8 w-8 flex items-center justify-center rounded-full border border-gray-700 hover:bg-gray-900 text-lg">
+              +
+            </button>
+            <input id="messageInput" type="text" placeholder="Type a message"
+              class="flex-1 bg-transparent border-none outline-none text-sm px-1 py-1.5 placeholder:text-gray-500" />
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <!-- Upload modal -->
+  <div id="uploadModal"
+    class="fixed inset-0 bg-black/70 flex items-center justify-center z-40 hidden">
+    <div class="bg-black border border-white/10 rounded-xl p-5 w-80 max-w-full backdrop-blur-xl">
+      <h3 class="text-sm font-semibold mb-3">Upload image</h3>
+      <input id="fileInput" type="file" accept="image/*"
+        class="w-full text-xs text-gray-300 file:mr-3 file:py-1.5 file:px-3 file:rounded-full file:border-0 file:bg-white file:text-black file:text-xs" />
+      <p id="fileName" class="mt-2 text-[11px] text-gray-400"></p>
+      <div class="mt-4 flex justify-end gap-2 text-xs">
+        <button id="closeUpload"
+          class="px-3 py-1 rounded-full border border-gray-600 hover:bg-gray-900">
+          Close
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      /* --- Back & Skip buttons --- */
+      const backButton = document.getElementById("backButton");
+      const skipButton = document.getElementById("skipButton");
+
+      backButton.addEventListener("click", () => {
+        // simple browser back; replace with router navigation if needed
+        window.history.back();
+      });
+
+      skipButton.addEventListener("click", () => {
+        alert("Skipped to the next match.");
+      });
+
+      /* --- Mode toggle (video <-> chat only) --- */
+      const modeToggle = document.getElementById("modeToggle");
+      const videoPanel = document.getElementById("videoPanel");
+      const chatPanel = document.getElementById("chatPanel");
+      let mode = "video"; // "video" or "chat"
+
+      function updateLayout() {
+        if (mode === "video") {
+          videoPanel.classList.remove("hidden");
+          chatPanel.classList.remove("lg:w-full");
+          chatPanel.classList.add("lg:w-1/3");
+          modeToggle.textContent = "Switch to text chat";
+        } else {
+          videoPanel.classList.add("hidden");
+          chatPanel.classList.remove("lg:w-1/3");
+          chatPanel.classList.add("lg:w-full");
+          modeToggle.textContent = "Switch to video chat";
+        }
+      }
+      modeToggle.addEventListener("click", () => {
+        mode = mode === "video" ? "chat" : "video";
+        updateLayout();
+      });
+      updateLayout();
+
+      /* --- Mic & camera toggles --- */
+      const micToggle = document.getElementById("micToggle");
+      const camToggle = document.getElementById("camToggle");
+      const micLabel = document.getElementById("micLabel");
+      const camLabel = document.getElementById("camLabel");
+      const localPreview = document.getElementById("localPreview");
+      const camOffOverlay = document.getElementById("cameraOffOverlay");
+
+      let micOn = true;
+      let camOn = true;
+
+      function updateMic() {
+        micLabel.textContent = micOn ? "Mic enabled" : "Mic muted";
+        micToggle.classList.toggle("bg-white", micOn);
+        micToggle.classList.toggle("text-black", micOn);
+        micToggle.classList.toggle("border-white", micOn);
+        micToggle.classList.toggle("bg-white/10", !micOn);
+        micToggle.classList.toggle("text-white", !micOn);
+        micToggle.classList.toggle("border-white/30", !micOn);
+      }
+
+      function updateCam() {
+        camLabel.textContent = camOn ? "Video enabled" : "Video disabled";
+        camToggle.classList.toggle("bg-white", camOn);
+        camToggle.classList.toggle("text-black", camOn);
+        camToggle.classList.toggle("border-white", camOn);
+        camToggle.classList.toggle("bg-white/10", !camOn);
+        camToggle.classList.toggle("text-white", !camOn);
+        camToggle.classList.toggle("border-white/30", !camOn);
+        localPreview.classList.toggle("hidden", !camOn);
+        camOffOverlay.classList.toggle("hidden", camOn);
+      }
+
+      micToggle.addEventListener("click", () => {
+        micOn = !micOn;
+        updateMic();
+      });
+      camToggle.addEventListener("click", () => {
+        camOn = !camOn;
+        updateCam();
+      });
+      updateMic();
+      updateCam();
+
+      /* --- Like button with red background flash (3s) --- */
+      const likeButton = document.getElementById("likeButton");
+      let liked = false;
+      let flashTimeout;
+      const originalBgColor = getComputedStyle(document.body).backgroundColor;
+
+      likeButton.addEventListener("click", () => {
+        liked = !liked;
+        likeButton.textContent = liked ? "♥" : "♡";
+
+        document.body.style.transition = "background-color 0.3s ease";
+        document.body.style.backgroundColor = "#ff0000";
+        clearTimeout(flashTimeout);
+        flashTimeout = setTimeout(() => {
+          document.body.style.backgroundColor = originalBgColor;
+        }, 3000);
+      });
+
+      /* --- Text input send just appends message --- */
+      const messageInput = document.getElementById("messageInput");
+      const messageArea = document.getElementById("messageArea");
+
+      messageInput.addEventListener("keydown", (e) => {
+        if (e.key === "Enter" && !e.shiftKey) {
+          e.preventDefault();
+          const text = messageInput.value.trim();
+          if (!text) return;
+
+          const row = document.createElement("div");
+          row.className = "flex justify-end";
+          const bubble = document.createElement("div");
+          bubble.className =
+            "max-w-xs rounded-2xl px-3 py-2 bg-gray-900 text-white text-sm";
+          bubble.textContent = text;
+          row.appendChild(bubble);
+          messageArea.appendChild(row);
+
+          const time = document.createElement("div");
+          time.className =
+            "text-[10px] text-gray-500 text-right pr-1";
+          const now = new Date();
+          time.textContent =
+            now.getHours().toString().padStart(2, "0") +
+            ":" +
+            now.getMinutes().toString().padStart(2, "0");
+          messageArea.appendChild(time);
+
+          messageArea.scrollTop = messageArea.scrollHeight;
+          messageInput.value = "";
+        }
+      });
+
+      /* --- Upload modal for + button --- */
+      const openUpload = document.getElementById("openUpload");
+      const uploadModal = document.getElementById("uploadModal");
+      const closeUpload = document.getElementById("closeUpload");
+      const fileInput = document.getElementById("fileInput");
+      const fileName = document.getElementById("fileName");
+
+      openUpload.addEventListener("click", () => {
+        uploadModal.classList.remove("hidden");
+      });
+
+      closeUpload.addEventListener("click", () => {
+        uploadModal.classList.add("hidden");
+      });
+
+      uploadModal.addEventListener("click", (e) => {
+        if (e.target === uploadModal) uploadModal.classList.add("hidden");
+      });
+
+      fileInput.addEventListener("change", () => {
+        const file = fileInput.files[0];
+        fileName.textContent = file ? `Selected: ${file.name}` : "";
+      });
+    });
+  </script>
+</body>
+
+</html>

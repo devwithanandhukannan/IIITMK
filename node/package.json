@@ -2,17 +2,19 @@
   "name": "node",
   "version": "1.0.0",
   "description": "",
-  "types": "module",
   "license": "ISC",
   "author": "",
-  "type": "commonjs",
-  "main": "sum.js",
+  "type": "module",
+  "main": "index.js",
   "scripts": {
-    "start":"nodemon sum.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "nodemon ./DAY 3/program_one.js"
   },
   "dependencies": {
-    "nodemon": "^3.1.11"
+    "lodash": "^4.17.21",
+    "nodemon": "^3.1.11",
+    "prompt-sync": "^4.2.0"
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "@types/prompt-sync": "^4.2.3"
+  }
 }
