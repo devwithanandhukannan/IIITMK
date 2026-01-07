@@ -14,7 +14,6 @@
 
 
 
-import { log } from 'console'
 import { stdout, stdin } from 'process'
 import rl from 'readline'
 const input = rl.createInterface({
