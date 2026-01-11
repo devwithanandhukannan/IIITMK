@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .priorityone{
+            background-color: red;
+            color: white;
+        }.prioritytwo{
+            background-color: green;
+            color: white;
+        }.prioritythree{
+            background-color: yellow;
+        }.strick{
+            text-decoration: line-through;
+        }
+    </style>
+</head>
+<body>
+    <h1>Todo app using array</h1>
+    <label for="task">Enter the task</label>
+    <input type="text" name="" id="task"><br>
+    <label for="priority">priority</label>
+    <input type="number" name="" id="priority" min="0" max="3"><br>
+    <button onclick="saveData(document.getElementById('task').value,document.getElementById('priority').value)">save</button>
+    <ul id="saved_data"></ul>
+    <script src="./script.js"></script>
+</body>
+</html>
