@@ -5,7 +5,11 @@ dotenv.config()
 const app = express()
 
 app.get('/',(req,res)=>{
-    res.send('this is your homepage data')
+    res.send(`
+        <div style="display:flex;align-items:center;justify-content:center;background-color:blue">
+            <h1 style="color:white;">Welcome to HomePage</h1>
+        </div>
+        `)
 })
 
 const port = process.env.PORT
