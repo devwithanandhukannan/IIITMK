@@ -1,34 +1,65 @@
 import express, { json } from 'express';
-import adminRoutes from './admin_routes.js';
-import userRoutes from './user_routes.js';
-import user from './map.js';
+import adminRoutes from './routes/kba_admin_routes.js';
+import userRoutes from './routes/kba_user_routes.js';
+import {user} from './map.js';
 import bcrypt from 'bcrypt'
+import certiappadminroutes from './routes/certi_admin_routes.js';
+import certiappuserroutes from './routes/certi_user_routes.js';
+import jwt from 'jsonwebtoken'
+import cookieParser from 'cookie-parser';
+import dotenv from 'dotenv'
 
+
+dotenv.config()
 const app = express();
 const port = 8000;
 
+app.use(cookieParser())
 app.use(express.json());
 
 app.use('/admin', adminRoutes);
 app.use('/user', userRoutes);
+app.use('/certi/admin',certiappadminroutes)
+app.use('/certi/user',certiappuserroutes)
 
 app.get('/', (req, res) => {
     res.status(200).send('Homepage');
 });
-
+app.get('/certi', (req, res) => {
+    res.status(200).send('CertiAPP homepage');
+});
 app.get('/contacts', (req, res) => {
     res.status(200).send('Contacts');
 });
 
 app.post('/signup', async (req, res) => {
     try {
-        const { email, name, password, mode } = req.body;
-        console.log(email, name, password, mode);
+        const { email, name, password, role } = req.body;
+        console.log(email, name, password, role);
         const hash_passwd = await bcrypt.hash(password,10)
         if(!user.has(email)){
-            user.set(email,{name,hash_passwd,mode})
+            user.set(email,{name,hash_passwd,role})
             console.log(user);
-            res.status(201).json({'status':'saved','data': Object.fromEntries(user)})
+            // res.status(201).json({'status':'saved','data': Object.fromEntries(user)})
+
+
+            console.log(process.env.JWT_SECRET_KEY);
+            
+            // JWT
+            const token = jwt.sign(
+                {email,role},
+                process.env.JWT_SECRET_KEY,
+                {expiresIn: '1h'}
+            )
+            console.log(`token : ${token}`);
+            
+            if(token){
+                res.status(200).cookie("kba_token", token,{
+                httpOnly:true
+                }).json({message:'login success'})
+            }
+
+
         }else{
             res.status(400).send('Email already existed!');
         }

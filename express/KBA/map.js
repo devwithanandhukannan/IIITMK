@@ -1,3 +1,2 @@
-const user = new Map();
-
-export default user
+export const user = new Map();
+export const courses = new Map();
