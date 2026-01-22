@@ -20,9 +20,6 @@ router.put('/update_course', (req, res) => {
 });
 
 router.post('/addcourse', authmiddleware, (req, res) => {
-
-    console.log(req.message);
-    
     if (req.role === 'admin') {
         try {
             const { course_name, course_id, course_type, description, price } = req.body;

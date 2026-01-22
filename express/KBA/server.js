@@ -8,6 +8,7 @@ import certiappuserroutes from './routes/certi_user_routes.js';
 import jwt from 'jsonwebtoken'
 import cookieParser from 'cookie-parser';
 import dotenv from 'dotenv'
+import authmiddleware from './middleware/auth.js';
 
 
 dotenv.config()
@@ -31,6 +32,7 @@ app.get('/certi', (req, res) => {
 app.get('/contacts', (req, res) => {
     res.status(200).send('Contacts');
 });
+
 
 app.post('/signup', async (req, res) => {
     try {
