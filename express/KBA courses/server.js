@@ -8,7 +8,7 @@ import certiappuserroutes from './routes/certi_user_routes.js';
 import jwt from 'jsonwebtoken'
 import cookieParser from 'cookie-parser';
 import dotenv from 'dotenv'
-import authmiddleware from './middleware/auth.js';
+import authmiddleware from './middleware/admin_auth.js';
 
 
 dotenv.config()
@@ -41,27 +41,16 @@ app.post('/signup', async (req, res) => {
         const hash_passwd = await bcrypt.hash(password,10)
         if(!user.has(email)){
             user.set(email,{name,hash_passwd,role})
-            console.log(user);
-            // res.status(201).json({'status':'saved','data': Object.fromEntries(user)})
-
-
-            console.log(process.env.JWT_SECRET_KEY);
-            
-            // JWT
             const token = jwt.sign(
                 {email,role},
                 process.env.JWT_SECRET_KEY,
                 {expiresIn: '1h'}
             )
-            console.log(`token : ${token}`);
-            
             if(token){
                 res.status(200).cookie("kba_token", token,{
                 httpOnly:true
                 }).json({message:'login success'})
             }
-
-
         }else{
             res.status(400).send('Email already existed!');
         }

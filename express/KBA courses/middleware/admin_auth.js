@@ -1,6 +1,6 @@
 import jwt from "jsonwebtoken";
 
-function authmiddleware(req, res, next) {
+function admin_middleware(req, res, next) {
     const token = req.cookies.kba_token;
 
     if (!token) {
@@ -9,13 +9,17 @@ function authmiddleware(req, res, next) {
 
     try {
         const decode = jwt.verify(token, process.env.JWT_SECRET_KEY);
-        req.email = decode.email;
-        req.role = decode.role;
-        next();
+        const role = decode.role;
+
+        if(role == "admin"){
+            next();
+        }else{
+            return res.status(401).json({msg: "no admin access"})
+        }
     } catch (err) {
         console.log("Invalid token");
         return res.status(401).json({ msg: "Invalid token" });
     }
 }
 
-export default authmiddleware;
+export default admin_middleware;
