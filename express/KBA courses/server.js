@@ -3,13 +3,9 @@ import adminRoutes from './routes/kba_admin_routes.js';
 import userRoutes from './routes/kba_user_routes.js';
 import {user} from './map.js';
 import bcrypt from 'bcrypt'
-import certiappadminroutes from './routes/certi_admin_routes.js';
-import certiappuserroutes from './routes/certi_user_routes.js';
 import jwt from 'jsonwebtoken'
 import cookieParser from 'cookie-parser';
 import dotenv from 'dotenv'
-import authmiddleware from './middleware/admin_auth.js';
-
 
 dotenv.config()
 const app = express();
@@ -20,8 +16,6 @@ app.use(express.json());
 
 app.use('/admin', adminRoutes);
 app.use('/user', userRoutes);
-app.use('/certi/admin',certiappadminroutes)
-app.use('/certi/user',certiappuserroutes)
 
 app.get('/', (req, res) => {
     res.status(200).send('Homepage');
@@ -32,7 +26,6 @@ app.get('/certi', (req, res) => {
 app.get('/contacts', (req, res) => {
     res.status(200).send('Contacts');
 });
-
 
 app.post('/signup', async (req, res) => {
     try {
