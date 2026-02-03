@@ -14,54 +14,60 @@ db.students.insertOne({
 
 
 db.students.insertMany([
-    {
+   {
      rollNo: 102,
      name: "Anjali",
      age: 21,
      course: "BSc CS",
      marks: 92,
      city: "Trivandrum"
-    },
-    {
+   },
+   {
      rollNo: 103,
      name: "Arjun",
      age: 19,
      course: "BCA",
      marks: 78,
      city: "Calicut"
-    },
-    {
+   },
+   {
      rollNo: 104,
      name: "Meera",
      age: 22,
      course: "BTech",
      marks: 88,
      city: "Kochi"
-    },
-    {
+   },
+   {
      rollNo: 105,
      name: "Vishnu",
      age: 20,
      course: "BSc CS",
      marks: 95,
      city: "Kannur"
-    }
+   }
 ])
  
 
 
-db.students.find({ marks: { $gt: 90}
+db.students.find({ marks: { $gt: 90
+   }
 })
 
 db.students.find({
-   marks: { $gte: 80, $lte: 90}
+   marks: { $gte: 80, $lte: 90
+   }
 })
  
 
 
 db.students.find({
    $or: [
-        { marks: { $gt: 90}},
-        { age: { $lt: 20}}
-    ]
+      { marks: { $gt: 90
+         }
+      },
+      { age: { $lt: 20
+         }
+      }
+   ]
 })
