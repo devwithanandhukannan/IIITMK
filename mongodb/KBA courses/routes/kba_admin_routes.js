@@ -5,7 +5,6 @@ import { course_model } from '../models/course.js';
 const router = Router();
 
 
-//  GET ALL COURSES
 router.get('/all_courses', async (req, res) => {
   try {
     const courses = await course_model.find();
@@ -17,7 +16,6 @@ router.get('/all_courses', async (req, res) => {
 });
 
 
-// GET COURSE BY ID
 router.get('/viewcourse', async (req, res) => {
   try {
     const { course_id } = req.query;
@@ -34,7 +32,6 @@ router.get('/viewcourse', async (req, res) => {
   }
 });
 
-//   ADD COURSE (ADMIN)
 router.post('/addcourse', admin_middleware, async (req, res) => {
   try {
     const { course_name, course_type, description, price } = req.body;
@@ -54,13 +51,11 @@ router.post('/addcourse', admin_middleware, async (req, res) => {
 });
 
 
-// PUT (FULL UPDATE)
 router.put('/update_course/:id', async (req, res) => {
   try {
     const updatedCourse = await course_model.findOneAndReplace(
       { _id: req.params.id },
-      req.body,
-      { new: true, runValidators: true }
+      req.body
     );
 
     if (!updatedCourse) {
@@ -78,16 +73,13 @@ router.put('/update_course/:id', async (req, res) => {
 });
 
 
-// PATCH (PRICE ONLY)
 
 router.patch('/patch_price', async (req, res) => {
   try {
     const { course_id, price } = req.body;
 
     const course = await course_model.findByIdAndUpdate(
-      course_id,
-      { $set: { price } },
-      { new: true }
+      course_id, price
     );
 
     if (!course) {
@@ -104,7 +96,6 @@ router.patch('/patch_price', async (req, res) => {
   }
 });
 
-//   DELETE COURSE
 
 router.delete('/delete', async (req, res) => {
   try {

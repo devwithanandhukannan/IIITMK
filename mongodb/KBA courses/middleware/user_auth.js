@@ -10,7 +10,9 @@ function user_middleware(req, res, next) {
     try {
         const decode = jwt.verify(token, process.env.JWT_SECRET_KEY);
         const role = decode.role;
-        const email = decode.email
+        req.user_id = decode.id;
+        req.email = decode.email;
+        req.role = decode.role;
         if(role == "user"){
             next();
         }else{
