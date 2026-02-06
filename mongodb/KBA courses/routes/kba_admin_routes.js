@@ -1,6 +1,6 @@
-import { Router } from "express";
-import admin_middleware from "../middleware/admin_auth.js";
-import { course_model } from "../models/course.js";
+import { Router } from 'express';
+import admin_middleware from '../middleware/admin_auth.js';
+import { course_model } from '../models/course.js';
 
 const router = Router();
 
@@ -114,31 +114,8 @@ router.post("/addcourse", admin_middleware, async (req, res) => {
   }
 });
 
-/**
- * @swagger
- * /update_course/{id}:
- *   put:
- *     summary: Replace a course completely
- *     tags: [Courses]
- *     parameters:
- *       - in: path
- *         name: id
- *         required: true
- *         schema:
- *           type: string
- *     requestBody:
- *       required: true
- *       content:
- *         application/json:
- *           schema:
- *             type: object
- *     responses:
- *       200:
- *         description: Course updated
- *       404:
- *         description: Invalid course id
- */
-router.put("/update_course/:id", async (req, res) => {
+
+router.put('/update_course/:id', async (req, res) => {
   try {
     const updatedCourse = await course_model.findOneAndReplace(
       { _id: req.params.id },

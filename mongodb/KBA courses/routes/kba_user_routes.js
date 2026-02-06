@@ -1,6 +1,8 @@
-import { Router } from "express";
-import user_middleware from "../middleware/user_auth.js";
-import { Cart } from "../models/cart.js";
+import { Router } from 'express';
+import user_middleware from '../middleware/user_auth.js';
+import { Cart } from '../models/cart.js';
+
+
 
 const router = Router();
 
@@ -39,6 +41,42 @@ router.get("/all_courses", user_middleware, (req, res) => {
  */
 router.get("/learn_more", user_middleware, (req, res) => {
   res.status(200).send("Learn more page");
+});
+
+router.get('/find_by_coursename', user_middleware, async (req, res) => {
+  try {
+    const { course_name } = req.query;
+
+    if (!course_name) {
+      return res.status(400).json({ message: 'course_name is required' });
+    }
+
+    const data = await course_model.findOne({ course_name });
+
+    if (!data) {
+      return res.status(404).json({ message: 'course not found' });
+    }
+
+    let compressedImage = null;
+
+    if (data.course_image) {
+      const imageBuffer = Buffer.from(data.course_image, 'base64');
+
+      compressedImage = await sharp(imageBuffer)
+        .resize({ width: 300 })
+        .jpeg({ quality: 70 })
+        .toBuffer();
+    }
+
+    return res.status(200).json({
+      image: compressedImage ? compressedImage.toString('base64') : null,
+      pdf: data.course_pdf || null
+    });
+
+  } catch (err) {
+    console.error(err);
+    return res.status(500).json({ message: 'internal server error' });
+  }
 });
 
 /**
