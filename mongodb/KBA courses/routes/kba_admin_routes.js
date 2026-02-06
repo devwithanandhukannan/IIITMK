@@ -1,6 +1,7 @@
 import { Router } from 'express';
 import admin_middleware from '../middleware/admin_auth.js';
 import { course_model } from '../models/course.js';
+import Upload from '../middleware/upload.js';
 
 const router = Router();
 
@@ -50,6 +51,34 @@ router.post('/addcourse', admin_middleware, async (req, res) => {
   }
 });
 
+
+router.post('/addcourse_with_image', admin_middleware, Upload.fields([{name:'courseImage',maxCount:3},{name:'resumePdf',maxCount:1}]), async (req, res) => {
+  try {
+    const { course_name, course_type, description, price } = req.body;
+    let courseImage = null
+
+    if(req.files?.courseImage){
+      courseImage = req.files.courseImage[0].buffer.toString('base64')
+    }
+    let resumePdf = null
+    if(req.files?.resumePdf){
+      resumePdf = req.files.resumePdf[0].buffer.toString('base64')
+    }
+    await course_model.create({
+      course_name,
+      course_type,
+      description,
+      price,
+      course_image: courseImage,
+      course_pdf:resumePdf
+    });
+
+    res.status(201).send('Course added successfully');
+  } catch (error) {
+    console.error(error);
+    res.status(400).send('Failed to add course');
+  }
+});
 
 router.put('/update_course/:id', async (req, res) => {
   try {
