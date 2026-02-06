@@ -7,11 +7,15 @@ import cookieParser from 'cookie-parser';
 import dotenv from 'dotenv';
 import { user_model } from './models/user.js';
 import mongoose from 'mongoose';
+import swaggerUi from "swagger-ui-express";
+import swaggerSpec from './swagger.js';
 
 dotenv.config();
 
 const app = express();
 const port = 8000;
+
+app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 
 mongoose.connect(process.env.MONGOOSE_URL).then(()=>{console.log('mongoose connected');
 }).catch((err)=>{console.log(err);
