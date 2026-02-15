@@ -31,7 +31,47 @@ app.get('/', (req, res) => {
     res.status(200).send('Homepage');
 });
 
+/**
+ * @swagger
+ * tags:
+ *   name: Auth
+ *   description: Authentication APIs
+ */
 
+/**
+ * @swagger
+ * /signup:
+ *   post:
+ *     summary: Register a new user
+ *     tags: [Auth]
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             required:
+ *               - name
+ *               - email
+ *               - password
+ *               - role
+ *             properties:
+ *               name:
+ *                 type: string
+ *               email:
+ *                 type: string
+ *               password:
+ *                 type: string
+ *               role:
+ *                 type: string
+ *     responses:
+ *       201:
+ *         description: Signup successful
+ *       400:
+ *         description: Validation error
+ *       500:
+ *         description: Server error
+ */
 app.post('/signup', async (req, res) => {
   try {
     const { email, name, password, role } = req.body;
@@ -59,7 +99,34 @@ app.post('/signup', async (req, res) => {
 });
 
 
-
+/**
+ * @swagger
+ * /login:
+ *   post:
+ *     summary: Login user
+ *     tags: [Auth]
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             required:
+ *               - email
+ *               - password
+ *             properties:
+ *               email:
+ *                 type: string
+ *               password:
+ *                 type: string
+ *     responses:
+ *       200:
+ *         description: Login successful
+ *       401:
+ *         description: Unauthorized
+ *       500:
+ *         description: Server error
+ */
 app.post('/login', async (req, res) => {
   try {
     const { email, password } = req.body;

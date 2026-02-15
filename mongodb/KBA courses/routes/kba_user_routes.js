@@ -18,7 +18,6 @@ const router = Router();
  * /all_courses:
  *   get:
  *     summary: Get all available courses (User)
- *     tags: [User Cart]
  *     responses:
  *       200:
  *         description: All courses
@@ -34,7 +33,6 @@ router.get("/all_courses", user_middleware, (req, res) => {
  * /learn_more:
  *   get:
  *     summary: Learn more about courses
- *     tags: [User Cart]
  *     responses:
  *       200:
  *         description: Learn more page
@@ -66,7 +64,7 @@ router.get('/find_by_coursename', user_middleware, async (req, res) => {
         .resize({ width: 300 })
         .jpeg({ quality: 70 })
         .toBuffer();
-    }
+    }    
 
     return res.status(200).json({
       image: compressedImage ? compressedImage.toString('base64') : null,

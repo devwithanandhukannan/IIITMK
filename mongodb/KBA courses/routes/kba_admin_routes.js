@@ -114,7 +114,6 @@ router.post("/addcourse", admin_middleware, async (req, res) => {
   }
 });
 
-
 router.put('/update_course/:id', async (req, res) => {
   try {
     const updatedCourse = await course_model.findOneAndReplace(
