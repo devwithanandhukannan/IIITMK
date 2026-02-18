@@ -1,16 +1,16 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
-import Parentone from './assets/components/Parentone'
+// import Parentone from './assets/components/Parentone'
+import Card from './assets/components/assignments/Card'
 
 function App() {
-  const [count, setCount] = useState(0)
-
+  // const [count, setCount] = useState(0)
+  const [dark, setDark] = useState(false)
+  
   return (
     <>
-    <Parentone/>
-      <h1>hello</h1>
+    <button onClick={()=>setDark(!dark)} className='bg-red-400 m-10 px-6 py-3 rounded'>{dark ? "Light":"Dark"}</button>
+    <Card isDark={dark}/>
     </>
   )
 }
