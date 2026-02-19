@@ -1,15 +1,36 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { MdDarkMode } from "react-icons/md";
+import { CiLight } from "react-icons/ci";
+import { FcLike } from "react-icons/fc";
 
-const Card = ({ isDark }) => {
+const Card = ({ isDark, title, desc }) => {
+  const [like, setLike] = useState(0)
+  const [dark, setDark]= useState(isDark)
+  useEffect(()=>{
+    setDark(isDark)
+  },[isDark])
   return (
-    <div className={`w-xl p-5 m-10 rounded-lg ${isDark
-    ? "bg-black text-white"
-    : "bg-gray-200 text-black"
-    }`}>
-      <h1 className="text-4xl">Card</h1>
-      <p>
-        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Mollitia ipsa sit dolorum maxime modi nostrum, doloremque amet dolores exercitationem dolorem libero blanditiis harum distinctio similique dicta deserunt? Cupiditate, fuga inventore!
-      </p>
+    <div
+      className={`
+        w-[20vw] p-5 m-5 rounded-lg 
+        ${dark ? "bg-gray-900 text-white" : "bg-gray-200 text-black"} 
+        transform transition duration-450 ease-out 
+        hover:scale-110 hover:shadow-lg 
+        animate-fadeIn
+        cursor-pointer
+      `}
+    >
+      <button onClick={()=>setDark(!dark)} className=' mb-5 p-3 rounded-full'>{dark ? <CiLight/>:<MdDarkMode/>}</button>
+      <h1 className="text-3xl">{title}</h1>
+      <p className="text-zinc-500">{desc}</p>
+      <div className="mt-10 flex">
+        <FcLike onClick={()=>{setLike(like+1)}} size={22} className="
+        transform transition duration-350 ease-out 
+        hover:scale-150 hover: 
+        animate-fadeIn
+        cursor-pointer
+        ml-1 mr-1 " />{like}
+      </div>
     </div>
   );
 };
