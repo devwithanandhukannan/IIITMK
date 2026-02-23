@@ -37,6 +37,22 @@ const rootReducer = combineReducers({
     tasks: taskReducer
 });
 
+
+const increment = () =>{
+    return({
+      type:'increment'
+    })
+}
+const decrement = () =>{
+    return({
+      type:'decrement'
+    })
+}
+
 const Store = createStore(rootReducer);
 
 export default Store;
+export {
+    increment,
+    decrement
+}
