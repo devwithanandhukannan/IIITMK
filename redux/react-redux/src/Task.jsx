@@ -1,21 +1,29 @@
 import React, { useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 
 const Task = () => {
     const [inputval, setInputval] = useState('')
-    const [tasks, setTask] = useState([])
+
+    const taskData = useSelector((state)=>{
+        return state.tasks
+        
+    })
+    console.log(taskData);
+    const taskdispatch = useDispatch()
   return (
     <>
         <br />
         <br />
         <input type="text" name="" id="inputbox" onChange={(e)=>{setInputval(e.target.value)}} />
         <button onClick={()=>{
-            setTask([...tasks, inputval])
+            taskdispatch({
+                type:'saveTask',
+                payload:inputval
+            })
         }}>save</button>
 
         <ul>
-            {tasks.map((val,index,arr)=>{
-                return <li key={index}>{val}</li>
-            })}
+            
         </ul>
     </>
   )

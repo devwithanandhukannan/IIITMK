@@ -1,28 +1,42 @@
-import { createStore } from "redux";
+import { createStore, combineReducers } from "redux";
 
+const initialCounterState = {
+    value: 0
+};
 
-const initial_state = {
-    value : 0
-}
+const initialTaskState = [];
 
-const appReducer = (prevState = initial_state, action) =>{
-    switch(action.type){
+const appReducer = (state = initialCounterState, action) => {
+    switch (action.type) {
         case 'increment':
-            return({
-                ...prevState,
-                value: prevState.value+1
-            })
+            return {
+                ...state,
+                value: state.value + 1
+            };
         case 'decrement':
-            return({
-                ...prevState,
-                value: prevState.value-1
-            })
+            return {
+                ...state,
+                value: state.value - 1
+            };
         default:
-            return prevState
+            return state;
     }
-}
+};
 
+const taskReducer = (state = initialTaskState, action) => {
+    switch (action.type) {
+        case 'saveTask':
+            return [...state, action.payload];
+        default:
+            return state;
+    }
+};
 
-const Store = createStore(appReducer)
+const rootReducer = combineReducers({
+    counter: appReducer,
+    tasks: taskReducer
+});
 
-export default Store
+const Store = createStore(rootReducer);
+
+export default Store;
