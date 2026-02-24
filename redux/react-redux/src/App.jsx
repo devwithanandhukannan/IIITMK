@@ -5,6 +5,7 @@ import { Provider } from 'react-redux'
 import Store from './store'
 import Counter from './Counter'
 import Task from './Task'
+import Immer from './Immer'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -14,6 +15,8 @@ function App() {
       <Provider store={Store}>
         <Counter/>
         <Task/>
+        <h1>Immer</h1>
+        <Immer/>
       </Provider>
     </>
   )
