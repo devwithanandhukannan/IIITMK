@@ -9,11 +9,13 @@ import { user_model } from './models/user.js';
 import mongoose from 'mongoose';
 import swaggerUi from "swagger-ui-express";
 import swaggerSpec from './swagger.js';
-
+import cors from 'cors'
 dotenv.config();
 
 const app = express();
 const port = 8000;
+
+app.use(cors());
 
 app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 

@@ -1,15 +1,25 @@
 import React, { useState } from 'react'
 import courseImage from '../assets/images/rp.png'
-import courseData from '../data/courseDummy.json'
+import { useEffect } from 'react'
 
 const CourseCard = () => {
-  const [desc, setDesc] = useState(false)
+  const [courseData, setCourseData] = useState([])
   const [expandedIndex, setExpandedIndex] = useState()
-  console.log(expandedIndex);
+  const [home, setHome]= useState(true)
+
   
+  useEffect(()=>{
+    fetch('http://localhost:8000/admin/all_courses')
+    .then(res=>res.json())
+    .then(data=>{
+      const courses = data.allcourses
+      setCourseData(courses)
+    })
+    .catch((err)=>{console.log(err)})
+    },[])
   return (
     <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 mx-5 my-10'>
-      {courseData.map((val, index) => {
+      {(home?courseData.slice(0,3):courseData).map((val, index) => {
         const isExpanded = expandedIndex === index
         return (
           <div
