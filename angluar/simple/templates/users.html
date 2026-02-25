@@ -1,0 +1,41 @@
+<h2>User List</h2>
+
+<ul>
+  <li ng-repeat="user in users">
+    {{ user.name }} - {{ user.email }}
+  </li>
+</ul>
+
+<hr>
+
+<h3>Add User</h3>
+
+<form name="userForm" ng-submit="addUser()" novalidate>
+
+  <input type="text"
+         name="name"
+         placeholder="Name"
+         ng-model="newUser.name"
+         required>
+
+  <span ng-show="userForm.name.$dirty && userForm.name.$error.required">
+    Name required
+  </span>
+
+  <br><br>
+
+  <input type="email"
+         name="email"
+         placeholder="Email"
+         ng-model="newUser.email"
+         required>
+
+  <span ng-show="userForm.email.$dirty && userForm.email.$error.email">
+    Invalid email
+  </span>
+
+  <br><br>
+
+  <button type="submit">Add User</button>
+
+</form>

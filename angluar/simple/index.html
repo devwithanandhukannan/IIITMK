@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+  <title>User Manager</title>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular-route.js"></script>
+
+  <!-- App Files -->
+  <script src="app/app.module.js"></script>
+  <script src="app/app.route.js"></script>
+  <script src="app/services/user.service.js"></script>
+  <script src="app/controller/user.controller.js"></script>
+  <script src="app/directives/custom-message.directive.js"></script>
+</head>
+<body>
+
+  <h1>User Manager App</h1>
+
+  <a href="#!/">Home</a> |
+  <a href="#!/users">Users</a>
+
+  <div ng-view></div>
+
+</body>
+</html>
