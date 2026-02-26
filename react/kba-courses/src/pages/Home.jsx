@@ -1,8 +1,10 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Navbar from '../components/navbar'
 import CourseCard from '../components/CourseCard'
 
+
 const Home = () => {
+    const [view_all, setViewAll] = useState(true)
     return (
         <>
                   <Navbar />
@@ -19,10 +21,12 @@ const Home = () => {
             </div>
 
             {/* card */}
-            <CourseCard />
+            <CourseCard view_all={view_all}/>
             {/* all course button */}
             <div className='flex justify-center mb-40'>
-                <button className='w-80 h-10 rounded-full bg-purple-500 text-white font-medium  hover:bg-purple-600' >View all Courses</button>
+                <button className='w-80 h-10 rounded-full bg-purple-500 text-white font-medium  hover:bg-purple-600'
+                onClick={()=>setViewAll(!view_all)}
+                >View all Courses</button>
             </div>
         </>
     )

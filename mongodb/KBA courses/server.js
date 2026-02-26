@@ -79,11 +79,11 @@ app.post('/signup', async (req, res) => {
     const { email, name, password, role } = req.body;
 
     if (!email || !name || !password || !role) {
-      return res.status(400).send('All fields are required');
+      return res.status(400).json({ message: 'All fields are required' });
     }
     const existingUser = await user_model.findOne({ email });
     if (existingUser) {
-      return res.status(400).send('Email already exists');
+      return res.status(400).json({ message: 'Email already exists' });
     }
     const hashedPassword = await bcrypt.hash(password, 10);
     await user_model.create({
@@ -96,7 +96,7 @@ app.post('/signup', async (req, res) => {
 
   } catch (error) {
     console.error(error);
-    res.status(500).send('Signup failed');
+    res.status(500).json({message:'Signup failed'+message});
   }
 });
 
@@ -134,17 +134,17 @@ app.post('/login', async (req, res) => {
     const { email, password } = req.body;
 
     if (!email || !password) {
-      return res.status(400).send('All fields are required');
+      return res.status(400).json({ message: 'All fields are required' })
     }
 
     const usr = await user_model.findOne({ email });
     if (!usr) {
-      return res.status(401).send('Invalid user');
+      return res.status(401).json({ message: 'Invalid user' })
     }
 
     const isMatch = await bcrypt.compare(password, usr.password);
     if (!isMatch) {
-      return res.status(401).send('Incorrect password');
+      return res.status(401).json({ message: 'Incorrect password' })
     }
 
     const token = jwt.sign(
@@ -160,7 +160,7 @@ app.post('/login', async (req, res) => {
         secure: false, // true in production
         maxAge: 60 * 60 * 1000
       })
-      .json({ message: 'Login successful' });
+      .json({ message: 'Login successful' ,token: token});
 
   } catch (error) {
     console.error(error);

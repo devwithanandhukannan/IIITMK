@@ -7,6 +7,7 @@ import Course from './pages/course';
 import EditCourse from './pages/EditCourse';
 import Login from './pages/Login';
 import Signup from './pages/Signup';
+import AllCourses from './pages/AllCourses';
 
 function App() {
   return (
@@ -14,12 +15,13 @@ function App() {
 
       <Routes>
         <Route path='/' element={<Home />} />
-        <Route path='/course' element={<Course />} />
+        <Route path='/course/:id' element={<Course />} />
         <Route path='/contact' element={<Contact />} />
         <Route path='/add-course' element={<AddCourse />} />
-        <Route path='/edit-course' element={<EditCourse/>}/>
+        <Route path='/edit-course/:id' element={<EditCourse/>}/>
         <Route path='/login' element={<Login/>}/>
         <Route path='/signup' element={<Signup/>}/>
+        <Route path='/all-courses' element={<AllCourses/>}/>
       </Routes>
     </>
   )

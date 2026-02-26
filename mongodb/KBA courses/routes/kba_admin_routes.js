@@ -50,9 +50,9 @@ router.get("/all_courses", async (req, res) => {
  *       404:
  *         description: Course not found
  */
-router.get("/viewcourse", async (req, res) => {
+router.get("/viewcourse/:course_id", async (req, res) => {
   try {
-    const { course_id } = req.query;
+    const { course_id } = req.params;   
     const course = await course_model.findById(course_id);
 
     if (!course) {
@@ -218,7 +218,7 @@ router.delete("/delete", async (req, res) => {
 
     res.status(200).json({ msg: "Course deleted successfully" });
   } catch (error) {
-    res.status(400).send("Delete failed");
+    res.status(400).json({msg:"Delete failed"});
   }
 });
 
