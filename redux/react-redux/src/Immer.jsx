@@ -15,7 +15,7 @@ const Immer = () => {
 const saveCarName = (val) => {
   setData(
     produce((draft) => {
-      draft.car.name = val; // Just mutate it!
+      draft.car.name = val; 
     })
   );
 };
@@ -26,7 +26,7 @@ const saveCarName = (val) => {
             <p>Name</p>
             <input type="text" name="" id="" defaultValue={data?.name} onChange={(e)=>{saveCarName(e.target.value)}}/>
             <p>car Name</p>
-            <input type="text" name="" id="" value={data.car.name} />
+            <p>{JSON.stringify(data)}</p>
         </div>
     </>
   )

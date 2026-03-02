@@ -2,7 +2,8 @@ import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import { Provider } from 'react-redux'
-import Store from './store'
+// import Store from './store'
+import store from './React-toolkit/store'
 import Counter from './Counter'
 import Task from './Task'
 import Immer from './Immer'
@@ -12,7 +13,7 @@ function App() {
 
   return (
     <>
-      <Provider store={Store}>
+      <Provider store={store}>
         <Counter/>
         <Task/>
         <h1>Immer</h1>

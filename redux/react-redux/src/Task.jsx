@@ -1,11 +1,13 @@
 import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-
+import { saveTask } from './React-toolkit/store'
 const Task = () => {
     const [inputval, setInputval] = useState('')
 
     const taskData = useSelector((state)=>{
-        return state.tasks
+        console.log(state);
+        
+        return state.task
         
     })
     console.log(taskData);
@@ -16,10 +18,7 @@ const Task = () => {
         <br />
         <input type="text" name="" id="inputbox" onChange={(e)=>{setInputval(e.target.value)}} />
         <button onClick={()=>{
-            taskdispatch({
-                type:'saveTask',
-                payload:inputval
-            })
+            taskdispatch(saveTask(inputval))
         }}>save</button>
 
         <ul>

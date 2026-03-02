@@ -1,9 +1,12 @@
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { increment, decrement } from './store' 
+// import { increment, decrement } from './store' 
+import store from './React-toolkit/store'
+import { increment, decrement } from './React-toolkit/store'
 const Counter = () => {
 
-  const value = useSelector((state) => state.counter.value)
+  const value = useSelector((state) => {return(state.counter);
+  })
 
   const dispatch = useDispatch()
 
