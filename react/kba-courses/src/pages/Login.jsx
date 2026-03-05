@@ -47,7 +47,6 @@ const Login = () => {
 
   return (
     <>
-      <Navbar />
       <div className="w-full flex justify-center items-center h-[90vh]">
         <div className="w-[400px] bg-white h-[500px] rounded-3xl shadow-lg">
           <h1 className="text-3xl font-bold pt-10 pb-5 text-center text-purple-600">

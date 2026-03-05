@@ -168,6 +168,17 @@ app.post('/login', async (req, res) => {
   }
 });
 
+app.post('/logout', (req, res) => {
+
+  res.cookie('kba_token', '', {
+    httpOnly: true,
+    secure: false,
+    expires: new Date(0),
+    path: '/',
+  });
+
+  res.status(200).json({ message: 'Logout successful' });
+});
 
 app.listen(port, () => {
     console.log(`App listening on port ${port}`);

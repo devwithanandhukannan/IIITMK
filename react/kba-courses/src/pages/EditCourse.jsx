@@ -62,7 +62,6 @@ const EditCourse = () => {
   }
   return (
     <>
-      <Navbar />
       <section className="bg-white mb-20">
         <div className="container m-auto max-w-2xl py-2">
           <div className="bg-purple-100 px-6 py-8 mb-4 shadow-md rounded-md border m-4 md:m-0">

@@ -14,12 +14,25 @@ const learnmore = (val) => {
   const [expandedIndex, setExpandedIndex] = useState(-1);
 
   useEffect(() => {
-    fetch('http://localhost:8000/admin/all_courses')
-      .then(res => res.json())
-      .then(data => {
-        setCourseData(data.allcourses);
-      })
-      .catch(err => console.log(err));
+    const fetch_course = async() =>{
+      try {
+        const res = await fetch('api/admin/all_courses',{
+          credentials: 'include'
+        })
+        if(res.status === 401 ){
+          navigate('/login')
+          throw new Error('unauthorized')
+          return
+        }
+        const data = await res.json();
+      setCourseData(data.allcourses || []);
+
+      } catch (error) {
+        console.log(error);
+        
+      }
+    }
+    fetch_course()
   }, []);
   
   return (

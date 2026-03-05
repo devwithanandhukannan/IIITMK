@@ -7,6 +7,7 @@ const Navbar = () => {
     { title: 'Home', link: '/' },
     { title: 'Courses', link: '/all-courses' },
     { title: 'Contact', link: '/contact' },
+    { title: 'Logout', link: '/logout' }
   ]
 
   const token = localStorage.getItem('authToken')

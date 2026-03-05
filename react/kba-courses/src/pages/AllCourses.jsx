@@ -5,7 +5,6 @@ import Navbar from '../components/navbar'
 const AllCourses = () => {
   return (
     <>
-        <Navbar/>
         <CourseCard/>
     </>
   )

@@ -25,6 +25,7 @@ const router = Router();
  *         description: Unauthorized
  */
 router.get("/all_courses", user_middleware, (req, res) => {
+
   res.status(200).send("All courses");
 });
 
