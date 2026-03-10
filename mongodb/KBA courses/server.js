@@ -10,6 +10,7 @@ import mongoose from 'mongoose';
 import swaggerUi from "swagger-ui-express";
 import swaggerSpec from './swagger.js';
 import cors from 'cors'
+import vertify_auth from './middleware/verify_auth.js';
 dotenv.config();
 
 const app = express();
@@ -178,6 +179,13 @@ app.post('/logout', (req, res) => {
   });
 
   res.status(200).json({ message: 'Logout successful' });
+});
+
+app.post("/verify_user", vertify_auth, (req, res) => {
+  res.status(200).json({
+    authenticated: true,
+    user: req.user
+  });
 });
 
 app.listen(port, () => {

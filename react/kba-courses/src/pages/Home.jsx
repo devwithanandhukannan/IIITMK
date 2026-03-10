@@ -1,10 +1,14 @@
 import React, { useState } from 'react'
 import Navbar from '../components/navbar'
 import CourseCard from '../components/CourseCard'
+import { useAuth } from '../auth_custom_hook/AuthContext'
 
 
 const Home = () => {
     const [view_all, setViewAll] = useState(true)
+    const data = useAuth()
+    console.log(data);
+    
     return (
         <>
             {/* hero */}
