@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import Navbar from '../components/navbar'
+import { toast } from 'react-toastify'
 
 const Addcourse = () => {
   const [courseName, setCourseName] = useState('')
@@ -23,8 +24,10 @@ const Addcourse = () => {
       })
       const data = await response.text();
       if (response.ok) {
+                toast.success('saved')
                 console.log('Course created successfully!')
             } else {
+                toast.error('save failed')
                 console.log(data.message)
             }
     } catch (error) {

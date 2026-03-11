@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import Navbar from '../components/navbar'
 import { Link, useNavigate, useParams } from 'react-router-dom'
+import { toast } from 'react-toastify'
 
 const Course = () => {
     const [role, setRole] = useState('user')
@@ -37,9 +38,11 @@ const Course = () => {
 
     const data = await response.json();
     if (response.ok) {
+        toast.success('deleted')
       console.log(data.msg);
       navigate('/')
     } else {
+        toast.error('delete failed')
       console.log('Delete failed:', data.msg);
     }
   } catch (error) {

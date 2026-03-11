@@ -1,13 +1,15 @@
 import React, { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import Navbar from '../components/navbar'
-
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 const Login = () => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState('')
   const navigate = useNavigate()
+
 
 
 
@@ -32,9 +34,11 @@ const Login = () => {
       const data = await response.json()
 
       if (response.ok) {
+        toast.success('/login success')
         localStorage.setItem('authToken', data.token)
         navigate('/')
       } else {
+        toast.error('login failed')
         setError(data.message || 'Login failed')
       }
     } catch (err) {

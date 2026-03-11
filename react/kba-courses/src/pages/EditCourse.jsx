@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import Navbar from '../components/navbar'
 import { useParams } from 'react-router-dom'
+import { toast } from 'react-toastify'
 
 const EditCourse = () => {
   const { id } = useParams()
@@ -51,8 +52,10 @@ const EditCourse = () => {
       })
       const data = await response.text();
       if (response.ok) {
+        toast.success('course added')
         console.log('Course created successfully!')
       } else {
+        toast.error('failed')
         console.log(data.message)
       }
     } catch (error) {
